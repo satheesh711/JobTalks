@@ -1,0 +1,35 @@
+{
+   "Highist_Rated_Companies": [
+        {
+            "company":"Google",
+            "OverallReview" : "Great work culture and opportunities!"
+        },
+        {
+            "company":"Amazon",
+            "OverallReview" : "Challenging environment with great benefits."
+        },
+        {
+            "company":"Microsoft",
+            "OverallReview" : "Innovation-driven company with a great work-life balance."
+        }
+   ],
+   "Highist_Rated_Roles": [
+        {
+            "Role":"Software Engineer",
+            "company":"Google",
+            "location":"Bangalore"
+        },
+        {
+            "Role":"Data Analyst",
+            "company":"Amazon",
+            "location":"Hyderabad"
+        },
+        {
+            "Role":"Product Manager",
+            "company":"Microsoft",
+            "location":"Delhi"
+        }
+   ]
+
+
+}
