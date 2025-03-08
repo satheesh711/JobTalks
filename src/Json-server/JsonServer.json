@@ -1,0 +1,110 @@
+{
+    "topCompanies": [
+    {
+      "company": "Google",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      "OverallReview": "Great work culture and opportunities!",
+      "id": "7ab3"
+    },
+    {
+      "company": "Amazon",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      "OverallReview": "Challenging environment with great benefits.",
+      "id": "fb84"
+    },
+    {
+      "company": "Microsoft",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      "OverallReview": "Innovation-driven company with a great work-life balance.",
+      "id": "a7e8"
+    },
+    {
+      "company": "Apple",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+      "OverallReview": "Cutting-edge technology with an innovative environment.",
+      "id": "c9f1"
+    },
+    {
+      "company": "Facebook",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+      "OverallReview": "Incredible opportunities in social media and online communities.",
+      "id": "d2f3"
+  },  
+    {
+      "company": "Netflix",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png",
+      "OverallReview": "Creative freedom and innovative storytelling environment.",
+      "id": "e5g6"
+    }
+  ],
+"topRoles": [
+    {
+      "Role": "Software Engineer",
+      "description": "Develop and maintain cutting-edge web applications.",
+      "image": "https://img.icons8.com/color/96/000000/code.png",
+      "id": "c5f3"
+    },
+    {
+      "Role": "Data Analyst",
+      "description": "Analyze data patterns to boost business performance.",
+      "image": "https://img.icons8.com/color/96/000000/combo-chart.png",
+      "id": "eb59"
+    },
+    {
+      "Role": "Product Manager",
+      "description": "Manage product strategy and collaborate with cross-functional teams.",
+      "image": "https://img.icons8.com/color/96/000000/innovation.png",
+      "id": "04a2"
+    },
+    {
+      "Role": "UX Designer",
+      "description": "Create intuitive and user-centered design experiences.",
+      "image": "https://img.icons8.com/color/96/000000/design.png",
+      "id": "d4e5"
+    },
+    {
+      "Role": "Cloud Engineer",
+      "description": "Architect and manage scalable cloud infrastructure.",
+      "image": "https://img.icons8.com/color/96/000000/cloud.png",
+      "id": "f6g7"
+    },
+    {
+      "Role": "AI Researcher",
+      "description": "Conduct cutting-edge research in artificial intelligence.",
+      "image": "https://img.icons8.com/color/96/000000/artificial-intelligence.png",
+      "id": "h8i9"
+    }
+  ],
+  "users": [
+    {
+      "id": "1741262677862",
+      "name": "satheesh",
+      "email": "chintur5431@gmail.com",
+      "method": "email"
+    },
+    {
+      "id": "1741262777659",
+      "name": "akash",
+      "email": "akash@gmail.com",
+      "method": "email"
+    },
+    {
+      "id": 1741279196989,
+      "name": "satheesh",
+      "email": "satheesh@gmail.com",
+      "method": "email"
+    },
+    {
+      "id": 1741281486515,
+      "name": "sfs",
+      "email": "satheessh@gamil.com",
+      "method": "email"
+    },
+    {
+      "id": 1741282341494,
+      "name": "Sira Satheesh",
+      "email": "satheessira@gmail.com",
+      "method": "google"
+    }
+  ]
+}
