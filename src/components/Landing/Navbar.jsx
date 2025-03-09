@@ -78,7 +78,7 @@ const Navbar = ({ homeRef, aboutRef, companyRef,roleRef, footerRef }) => {
                         <li className="nav-item mt-2 mt-lg-0">
                             <button
                                 className="btn btn-outline-primary"
-                                onClick={() => navigate("/Auth")}
+                                onClick={() => navigate("/login")}
                             >
                                 Login
                             </button>

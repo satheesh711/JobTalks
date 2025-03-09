@@ -1,8 +1,9 @@
-// import './App.css'
+import { AuthLayout } from './components/Authentication/AthenticationLayout';
+import { LoginForm } from './components/Authentication/LoginForm';
+import { SignupForm } from './components/Authentication/SignupForm';
+import Home from './pages/Home/Home';
 import Landing from './pages/Landing/Landing';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Home from './pages/Home/Home';
-import AuthPage from './pages/Authentication/Authentication';
 function App() {
 
   return (
@@ -10,26 +11,37 @@ function App() {
      <Router>
       <Routes>
         <Route path="/landing" element={<Landing />} />
-        {/* <Route path="/doclogin" element={<DocLogin />} />
-        <Route path="/adlogin" element={<AdminLogin />} /> */}
 
         <Route path="/" element={<Navigate to="/landing" />} />
 
-        <Route
-          path="/Auth"
+        <Route 
+          path="/login" 
           element={
-            // <AdminAuthGuard>
-              <AuthPage />
-            /* </AdminAuthGuard> */
-          }
+            <AuthLayout 
+              title="Welcome back" 
+              subtitle="Login in to your account to continue"
+            >
+              <LoginForm />
+            </AuthLayout>
+          } 
         />
-        <Route
-          path='/home'
+        <Route 
+          path="/signup" 
           element={
-            <Home />
-          }
-          />
-
+            <AuthLayout 
+              title="Create an account" 
+              subtitle="Sign up to get started"
+            >
+              <SignupForm />
+            </AuthLayout>
+          } 
+        />
+      <Route
+        path='/home'
+        element={
+          <Home />
+        }
+        />
       </Routes>
     </Router>
 
