@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopCompaniesList } from "../../Services/topCompanies";
+import { Link } from 'react-router-dom';
 
 const CompanyReviews = ({ companyRef }) => {
     const [top, setTop] = useState([]);
@@ -24,9 +25,9 @@ const CompanyReviews = ({ companyRef }) => {
                         top.map(
                             (company, index) => (
                                 <div className="col-md-4" key={index}>
-                                    <div 
+                                    <div
                                         className="card shadow-sm p-3 d-flex flex-column h-100"
-                                        style={{ 
+                                        style={{
                                             transition: "transform 0.3s ease, box-shadow 0.3s ease"
                                         }}
                                         onMouseOver={(e) => {
@@ -42,7 +43,9 @@ const CompanyReviews = ({ companyRef }) => {
                                         <h5>{company.company}</h5>
                                         <p className="flex-grow-1">{company.OverallReview}</p>
                                         <div className="mt-auto">
-                                            <a href="#" className="btn btn-outline-primary w-100">View Details</a>
+                                            <Link to="/login" className="btn btn-outline-primary w-100">
+                                                View Details
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/Logo.ico";
+import { guestLogin } from "../../Services/users";
 
 const Navbar = ({ homeRef, aboutRef, companyRef,roleRef, footerRef }) => {
     const navigate = useNavigate();
@@ -17,7 +18,11 @@ const Navbar = ({ homeRef, aboutRef, companyRef,roleRef, footerRef }) => {
         }
         closeNavbar();
     };
-
+    const handleGuest = ()=>
+    {
+        guestLogin()
+        navigate("/home")
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
             <div className="container">
@@ -75,12 +80,20 @@ const Navbar = ({ homeRef, aboutRef, companyRef,roleRef, footerRef }) => {
                                 Footer
                             </button>
                         </li>
-                        <li className="nav-item mt-2 mt-lg-0">
+                        <li className="nav-item mt-2 mt-lg-0 m-1">
                             <button
                                 className="btn btn-outline-primary"
                                 onClick={() => navigate("/login")}
                             >
                                 Login
+                            </button>
+                        </li>
+                        <li className="nav-item mt-2 mt-lg-0">
+                            <button
+                                className="btn btn-outline-primary"
+                                onClick={() =>handleGuest()}
+                            >
+                                Guest Login
                             </button>
                         </li>
                     </ul>

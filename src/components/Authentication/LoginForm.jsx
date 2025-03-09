@@ -8,11 +8,11 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
-import { checkCredentials,checkUserExists, addUser} from '../../Services/users';
+import { checkUserExists, addUser, checkCredentials} from '../../Services/users';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+  password: z.string().min(0,"")
 });
 
 export function LoginForm() {
@@ -26,31 +26,27 @@ export function LoginForm() {
   const handleLogin = async (data) => {
     try {
       setIsLoading(true);
-      // Check if user exists in JSON server
       const userExists = await checkUserExists(data.email);
+      console.log("user",userExists)
       if (!userExists) {
         setUserMessage('User not found. Please sign up first')
         toast.error('User not found. Please sign up first.');
         return;
       }
-      const checkCredentials = await checkCredentials(data.email,data.password)
-      if(!checkCredentials)
+      console.log(data)
+      const checkCredential = await checkCredentials(data.email,data.password)
+      console.log("check",checkCredential)
+      if(!checkCredential)
       {
-        setUserMessage("Pleace Check Your Credentials")
-        toast.error('Pleace Check Your Credentials');
+        setUserMessage("Please Check Your Credentials")
+        toast.error('Please Check Your Credentials');
         return ;
       }
-        try {
-          await signInWithEmailAndPassword(auth, data.email, data.password);
-          alert('Sign-in successful!');
-        } catch (err) {
-          console.log("error sign in ",err); // Display Firebase error messages
-        }
       await signInWithEmailAndPassword(auth, data.email, data.password);
       toast.success('Successfully logged in!');
       navigate('/home');
     } catch (error) {
-      setUserMessage("Invalid credentials");
+      setUserMessage("Invalid credentials email");
       toast.error('Invalid credentials');
     } finally {
       setIsLoading(false);
@@ -83,7 +79,6 @@ export function LoginForm() {
       toast.error('Failed to login with Google');
     }
   };
-
   return (
     <div>
       <form onSubmit={handleSubmit(handleLogin)} className="mb-4">
@@ -114,12 +109,10 @@ export function LoginForm() {
             <input
               {...register('password')}
               type="password"
-              className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+              className={`form-control`}
               placeholder="Enter your password"
             />
-            {errors.password && (
-              <div className="invalid-feedback">{errors.password.message}</div>
-            )}
+             
           </div>
         </div>
 

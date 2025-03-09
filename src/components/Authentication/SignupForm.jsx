@@ -66,12 +66,10 @@ export function SignupForm() {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
 
-      // Check if user exists in JSON server
       const userExists = await checkUserExists(result.user.email);
 
       if (!userExists) {
-        // Add user to JSON server if they don't exist
-        const userData = {
+         const userData = {
           id: Date.now().toString(),
           name: result.user.displayName,
           email: result.user.email,
@@ -137,7 +135,7 @@ export function SignupForm() {
           whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={isLoading}
-          className="btn btn-primary w-100 mb-3"
+          className="btn btn-primary w-100"
         >
           {isLoading ? 'Creating account...' : 'Sign up'}
         </motion.button>

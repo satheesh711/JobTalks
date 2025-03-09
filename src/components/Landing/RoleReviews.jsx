@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopRolesList } from "../../Services/topRoles";
+import { Link } from 'react-router-dom';
 
 const RoleReviews = ({ roleRef }) => {
     const [top, setTop] = useState([]);
@@ -24,10 +25,10 @@ const RoleReviews = ({ roleRef }) => {
                 <div className="row g-4">
                     {top.map((role, index) => (
                         <div className="col-md-4" key={index}>
-                            <div 
+                            <div
                                 className="card shadow-sm p-3 d-flex flex-column h-100"
-                                style={{ 
-                                    transition: "transform 0.3s ease, box-shadow 0.3s ease" 
+                                style={{
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease"
                                 }}
                                 onMouseOver={(e) => {
                                     e.currentTarget.style.transform = "scale(1.05)";
@@ -47,8 +48,9 @@ const RoleReviews = ({ roleRef }) => {
                                 <h5 className="text-primary">{role.Role}</h5>
                                 <p className="text-muted flex-grow-1">{role.description}</p>
                                 <div className="mt-auto">
-                                    <a href="#" className="btn btn-outline-primary w-100">View Details</a>
-                                </div>
+                                    <Link to="/login" className="btn btn-outline-primary w-100">
+                                        View Details
+                                    </Link>                                </div>
                             </div>
                         </div>
                     ))}
