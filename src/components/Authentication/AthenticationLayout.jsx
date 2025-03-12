@@ -13,7 +13,7 @@ export function AuthLayout({ children, title, subtitle }) {
       const newHeight = formRef.current.scrollHeight;
       setPhotoHeight(`${newHeight}px`);
     }
-  }, []); // Runs only once on mount
+  }, []);  
 
   useEffect(() => {
     setChildKey((prevKey) => prevKey + 1);
@@ -38,7 +38,6 @@ export function AuthLayout({ children, title, subtitle }) {
 
       <div className="d-flex flex-column flex-lg-row w-100" style={{ maxWidth: '68rem' }}>
         
-        {/* Image Side */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -62,7 +61,6 @@ export function AuthLayout({ children, title, subtitle }) {
           </div>
         </motion.div>
 
-        {/* Form Side */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -77,7 +75,6 @@ export function AuthLayout({ children, title, subtitle }) {
               transition: 'height 0.5s ease-in-out'
             }}
           >
-            {/* Animated Title and Subtitle */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={headingKey}
@@ -92,7 +89,6 @@ export function AuthLayout({ children, title, subtitle }) {
               </motion.div>
             </AnimatePresence>
 
-            {/* Animated Content Rotation */}
             <AnimatePresence mode="wait">
               <motion.div 
                 key={childKey}

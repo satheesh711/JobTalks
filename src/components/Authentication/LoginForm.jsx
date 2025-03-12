@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { Mail, Lock } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { toast } from "react-toastify";
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
@@ -27,7 +27,6 @@ export function LoginForm() {
     try {
       setIsLoading(true);
       const userExists = await checkUserExists(data.email);
-      console.log("user",userExists)
       if (!userExists) {
         setUserMessage('User not found. Please sign up first')
         toast.error('User not found. Please sign up first.');
@@ -35,7 +34,6 @@ export function LoginForm() {
       }
       console.log(data)
       const checkCredential = await checkCredentials(data.email,data.password)
-      console.log("check",checkCredential)
       if(!checkCredential)
       {
         setUserMessage("Please Check Your Credentials")
@@ -44,6 +42,7 @@ export function LoginForm() {
       }
       await signInWithEmailAndPassword(auth, data.email, data.password);
       toast.success('Successfully logged in!');
+      sessionStorage.setItem("LoginStatus",true)
       navigate('/home');
     } catch (error) {
       setUserMessage("Invalid credentials email");
@@ -73,6 +72,7 @@ export function LoginForm() {
       }
 
       toast.success('Successfully logged in with Google!');
+      sessionStorage.setItem("LoginStatus",true)
       navigate('/home');
     } catch (error) {
       setUserMessage("Failed to login with Google")

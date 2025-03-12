@@ -79,6 +79,7 @@ export function SignupForm() {
       }
 
       toast.success('Successfully logged in with Google!');
+      sessionStorage.setItem("LoginStatus",true)
       navigate('/home');
     } catch (error) {
       toast.error('Failed to login with Google');

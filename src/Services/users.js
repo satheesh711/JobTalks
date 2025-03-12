@@ -41,9 +41,10 @@ export const guestLogin =async (defaultData={
         ...defaultData
       };
       const createdUser = await axios.post(BASE_URL, newGuest);
-      return createdUser
+      return true
     }
   } catch (error) {
     console.error("Error handling guest login:", error);
+    return false
   }
 }

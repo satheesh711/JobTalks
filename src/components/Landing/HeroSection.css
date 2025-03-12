@@ -14,39 +14,38 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 90vh; /* Default height for larger screens */
+    height: 90vh;  
 }
 
 .carousel-container img {
     object-fit: cover;
     width: 100vw;
     height: 90vh;
-    opacity: 0.8; /* To make text more visible */
+    opacity: 0.8; 
 }
 
 .hero h1, .hero p {
-    z-index: 1;  /* Ensures text stays above carousel */
+    z-index: 1;   
 }
 
-/* Media Query for Mobile Devices */
 @media (max-width: 768px) {
     .hero {
-        height: 70vh;  /* Reduce hero height for better mobile experience */
+        height: 70vh;   
     }
 
     .carousel-container {
-        height: 70vh;  /* Ensure carousel matches the reduced height */
+        height: 70vh;  
     }
 
     .carousel-container img {
-        height: 70vh;  /* Maintain image proportion */
+        height: 70vh;  
     }
 
     .hero h1 {
-        font-size: 2rem;  /* Adjust heading size for mobile */
+        font-size: 2rem;  
     }
 
     .hero p {
-        font-size: 1rem;  /* Adjust paragraph size for mobile */
+        font-size: 1rem;   
     }
 }
