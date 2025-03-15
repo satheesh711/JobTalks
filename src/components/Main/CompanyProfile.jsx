@@ -49,10 +49,12 @@ const CompanyProfile = () => {
     return <LoadingSpinner />;
   }
 
-  const handleAddReview = (review) => {
-    addReview({
-      ...review,
-    },id);
+  const handleAddReview = async(review) => {
+
+    await addReview({ ...review }, id);
+    await loadCompany();
+    await loadReviews();
+    await loadRoles();
     setShowReviewModal(false);
   };
 
@@ -67,10 +69,10 @@ const CompanyProfile = () => {
           <div className="row align-items-center">
             <div className="col-md-2">
               <img
-                src={company.logoUrl}
+                src={company.logo}
                 alt={company.name}
                 className="img-fluid rounded-circle"
-                style={{ width: 120, height: 120, objectFit: 'cover' }}
+                style={{ width: 120, height: 120, objectFit: 'contain'}}
               />
             </div>
             <div className="col-md-10">

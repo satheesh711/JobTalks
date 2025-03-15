@@ -3,13 +3,26 @@ import { motion } from 'framer-motion';
 import { Search as SearchIcon, Filter, Building2, MapPin, Users, DollarSign } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import CompanyCard from './Comanycard';
+import { companies as companiesData } from '../../Services/companies';
 // import useCompanyStore from '../../pages/data/CompanyStore';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
-  const companies = useCompanyStore(state => state.companies);
+   const [companies, setCompanies] = useState([]);
+      useEffect(() => {
+          Companies()
+      }, [])
   
+      const Companies = async () => {
+          try {
+              const data = await companiesData()
+              setCompanies(data)
+          }
+          catch (error) {
+              console.error("Error fetching Highest rated companies:", error)
+          }
+      }
   const [filters, setFilters] = useState({
     query: searchParams.get('q') || '',
     industry: searchParams.get('industry') || '',
@@ -167,37 +180,13 @@ const Search = () => {
       </div>
 
       {filteredCompanies.length > 0 && (
-        <div className="row mt-4">
-          <div className="col-12">
             <div className="card bg-light">
-              <div className="card-body">
+              <div className="card-body"> 
                 <div className="row text-center">
-                  <div className="col-md-3">
                     <Building2 size={24} className="text-primary mb-2" />
                     <h4>{filteredCompanies.length}</h4>
                     <p className="text-muted mb-0">Companies Found</p>
-                  </div>
-                  <div className="col-md-3">
-                    <MapPin size={24} className="text-primary mb-2" />
-                    <h4>{locations.length}</h4>
-                    <p className="text-muted mb-0">Locations</p>
-                  </div>
-                  <div className="col-md-3">
-                    <Users size={24} className="text-primary mb-2" />
-                    <h4>{industries.length}</h4>
-                    <p className="text-muted mb-0">Industries</p>
-                  </div>
-                  <div className="col-md-3">
-                    <DollarSign size={24} className="text-primary mb-2" />
-                    <h4>
-                      ${Math.min(...companies.map(c => c.salaryRange?.min || Infinity)).toLocaleString()} - 
-                      ${Math.max(...companies.map(c => c.salaryRange?.max || 0)).toLocaleString()}
-                    </h4>
-                    <p className="text-muted mb-0">Salary Range</p>
-                  </div>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       )}

@@ -4,7 +4,6 @@ import { Star } from 'lucide-react';
 
 const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
   const [formData, setFormData] = useState({
-    // companyId: '',
     rating: 5,
     title: '',
     pros: '',
@@ -18,6 +17,7 @@ const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
     onSubmit({
       ...formData,
       date: new Date().toISOString().split('T')[0],
+      id:new Date().toISOString().replace(/[-:.TZ]/g, ''),
       helpful: 0,
       verified: true,
       location: companies.find(c => c.id === parseInt(formData.companyId))?.location || ''

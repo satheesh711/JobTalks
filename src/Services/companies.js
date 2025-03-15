@@ -23,13 +23,16 @@ export const getCompanyRoles = async (companyId) => {
 
 export const addReview = async (review, id) => {
   const { data } = await axios.get(`${BASE_URL}/${id}`);
-  
+  const reviewsCount=data.reviewCount
   const updatedCompanyData = {
     ...data,
-    reviews: [...(data.reviews || []), review] // Ensure `reviews` exists
+    reviews: [...(data.reviews || []), review],
+    reviewCount : reviewsCount+ 1,
+    rating : (((data.rating)*reviewsCount)+review.rating)/(reviewsCount+1)
   };
 
-  await axios.put(`${BASE_URL}/${id}`, updatedCompanyData);
+  const response=await axios.put(`${BASE_URL}/${id}`, updatedCompanyData);
+  return response.data
 }
 
 
@@ -41,6 +44,9 @@ export const checkCompany = async (newCompany) => {
   return data.some(company =>
     company.slug === newCompany.slug
   )
+}
 
+export const updateRating = async (newRating) =>
+{
 
 }

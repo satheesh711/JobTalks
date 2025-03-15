@@ -24,6 +24,7 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
     const newCompany={
       ...formData,
       benefits,
+      id:new Date().toISOString().replace(/[-:.TZ]/g, ''),
       slug: formData.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''),
       salaryRange: {
         min: parseInt(formData.salaryMin),
@@ -36,7 +37,6 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
 
 
     const isDuplicate = await checkCompany(newCompany)
-    console.log(isDuplicate)
 
   if (isDuplicate) {
      

@@ -11,7 +11,7 @@ const Companies = () => {
 
     useEffect(() => {
         Companies()
-    }, [companies])
+    }, [])
 
     const Companies = async () => {
         try {
@@ -41,9 +41,9 @@ const Companies = () => {
   const industries = Array.from(new Set(companies.map(company => company.industry)));
   const locations = Array.from(new Set(companies.map(company => company.location)));
 
-  const handleAddCompany = (newCompany) => {
-    addComapy(newCompany)
-    Companies()
+  const handleAddCompany = async(newCompany) => {
+    await addComapy(newCompany)
+    await Companies()
   };
 
   const filteredCompanies = companies?.filter(company => {
