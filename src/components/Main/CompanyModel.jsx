@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { checkCompany } from '../../Services/companies';
+import { toast } from "react-toastify";
 
 const CompanyModal = ({ show, onClose, onSubmit }) => {
-  const [formData, setFormData] = useState({
+
+ const initialFormData= {
     name: '',
     industry: '',
     location: '',
@@ -11,14 +14,17 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
     benefits: '',
     salaryMin: '',
     salaryMax: ''
-  });
+  }
 
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const benefits = formData.benefits.split(',').map(benefit => benefit.trim());
-    onSubmit({
+    const newCompany={
       ...formData,
       benefits,
+      slug: formData.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''),
       salaryRange: {
         min: parseInt(formData.salaryMin),
         max: parseInt(formData.salaryMax),
@@ -26,8 +32,20 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
       },
       rating: 0,
       reviewCount: 0
-    });
-    onClose();
+    }
+
+
+    const isDuplicate = await checkCompany(newCompany)
+    console.log(isDuplicate)
+
+  if (isDuplicate) {
+     
+      toast.error('Company already exists!');
+  } else {
+      onSubmit(newCompany);
+      setFormData(initialFormData)
+      onClose();
+  }
   };
 
   if (!show) return null;

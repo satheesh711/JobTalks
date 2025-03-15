@@ -121,11 +121,89 @@
         "max": 150000,
         "currency": "USD"
       },
+      "reviews": [
+        {
+          "id": "1",
+          "rating": 4.5,
+          "title": "Great work culture and benefits",
+          "pros": "Excellent work-life balance, competitive salary, and great learning opportunities. The company really invests in employee growth and development. Regular training sessions and workshops keep skills up to date.",
+          "cons": "Project deadlines can be tight sometimes. Communication between departments could be improved. Some legacy systems need updating.",
+          "authorRole": "Senior Software Engineer",
+          "date": "2024-02-15",
+          "helpful": 25,
+          "experience": "3+ years at company",
+          "location": "San Francisco, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "id": "2",
+          "rating": 4,
+          "title": "Solid company with room for growth",
+          "pros": "Great benefits package, competitive pay, and opportunities for advancement. Strong technical team and interesting projects. Good work-life balance.",
+          "cons": "Some processes could be streamlined. Decision-making can be slow at times. Office location could be better.",
+          "authorRole": "Product Manager",
+          "date": "2024-02-10",
+          "helpful": 18,
+          "experience": "2 years at company",
+          "location": "San Francisco, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        }
+      ],
       "roles": [
-        "Software Engineer",
-        "Product Manager",
-        "Data Scientist",
-        "DevOps Engineer"
+        {
+          "id": "1",
+          "title": "Senior Software Engineer",
+          "department": "Engineering",
+          "salaryRange": {
+            "min": 130000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Stock Options",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "5+ years of experience in software development",
+            "Strong knowledge of JavaScript/TypeScript",
+            "Experience with cloud platforms (AWS/Azure/GCP)"
+          ],
+          "responsibilities": [
+            "Lead development of key features",
+            "Mentor junior developers",
+            "Contribute to system architecture"
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Product Manager",
+          "department": "Product",
+          "salaryRange": {
+            "min": 120000,
+            "max": 160000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Flexible Hours",
+            "Performance Bonus",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "3+ years of product management experience",
+            "Strong analytical skills",
+            "Experience with agile methodologies"
+          ],
+          "responsibilities": [
+            "Define product strategy",
+            "Work with stakeholders",
+            "Manage product roadmap"
+          ]
+        }
       ]
     },
     {
@@ -148,11 +226,89 @@
         "max": 180000,
         "currency": "USD"
       },
+      "reviews": [
+        {
+          "id": "3",
+          "rating": 4.8,
+          "title": "Fantastic learning environment",
+          "pros": "Cutting-edge technology stack, great mentorship program, excellent compensation. Regular team building activities and strong company culture.",
+          "cons": "Fast-paced environment might not suit everyone. Some projects can be challenging with tight deadlines.",
+          "authorRole": "Full Stack Developer",
+          "date": "2024-02-20",
+          "helpful": 32,
+          "experience": "1.5 years at company",
+          "location": "New York, NY",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "id": "4",
+          "rating": 4.2,
+          "title": "Good balance of challenge and support",
+          "pros": "Modern tech stack, friendly colleagues, good benefits. Regular opportunities to learn new technologies and work on different projects.",
+          "cons": "Communication between departments could be better. Some technical debt in older projects.",
+          "authorRole": "Senior Developer",
+          "date": "2024-02-18",
+          "helpful": 15,
+          "experience": "2.5 years at company",
+          "location": "New York, NY",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        }
+      ],
       "roles": [
-        "Full Stack Developer",
-        "UX Designer",
-        "Project Manager",
-        "QA Engineer"
+        {
+          "id": "3",
+          "title": "Full Stack Developer",
+          "department": "Engineering",
+          "salaryRange": {
+            "min": 100000,
+            "max": 150000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Learning Budget",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "3+ years of full stack development experience",
+            "Experience with React and Node.js",
+            "Knowledge of database systems"
+          ],
+          "responsibilities": [
+            "Develop full stack applications",
+            "Optimize application performance",
+            "Write clean, maintainable code"
+          ]
+        },
+        {
+          "id": "4",
+          "title": "UX Designer",
+          "department": "Design",
+          "salaryRange": {
+            "min": 90000,
+            "max": 130000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Creative Environment",
+            "Design Tools Budget",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "MS/PhD in Computer Science or related field",
+            "Strong background in machine learning",
+            "Experience with Python and data analysis tools"
+          ],
+          "responsibilities": [
+            "Develop machine learning models",
+            "Analyze complex datasets",
+            "Present findings to stakeholders"
+          ]
+        }
       ]
     },
     {
@@ -175,90 +331,151 @@
         "max": 175000,
         "currency": "USD"
       },
+      "reviews": [
+        {
+          "id": "5",
+          "rating": 4.6,
+          "title": "Innovative and employee-focused",
+          "pros": "Cutting-edge projects in AI/ML, great team atmosphere, excellent benefits. Strong emphasis on work-life balance and professional development.",
+          "cons": "Some projects can be very challenging. Occasional long hours during critical releases.",
+          "authorRole": "Data Scientist",
+          "date": "2024-02-22",
+          "helpful": 28,
+          "experience": "2 years at company",
+          "location": "Boston, MA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "id": "10",
+          "rating": 5,
+          "title": "ertyui",
+          "pros": "goodd",
+          "cons": "badd",
+          "authorRole": "ertyuio",
+          "experience": "78",
+          "date": "2025-03-15",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        }
+      ],
       "roles": [
-        "Data Analyst",
-        "Machine Learning Engineer",
-        "Business Intelligence Analyst"
+        {
+          "id": "5",
+          "title": "Data Scientist",
+          "department": "Data Science",
+          "salaryRange": {
+            "min": 120000,
+            "max": 170000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Research Budget",
+            "Conference Allowance",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "MS/PhD in Computer Science or related field",
+            "Strong background in machine learning",
+            "Experience with Python and data analysis tools"
+          ],
+          "responsibilities": [
+            "Develop machine learning models",
+            "Analyze complex datasets",
+            "Present findings to stakeholders"
+          ]
+        },
+        {
+          "id": "6",
+          "title": "Machine Learning Engineer",
+          "department": "AI/ML",
+          "salaryRange": {
+            "min": 130000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "GPU Access",
+            "Research Publications",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "Experience in developing deep learning models",
+            "Proficiency in TensorFlow or PyTorch",
+            "Expertise in data preprocessing and model deployment"
+          ],
+          "responsibilities": [
+            "Build and optimize machine learning models",
+            "Collaborate with data scientists and software engineers",
+            "Deploy models in production environments"
+          ]
+        }
       ]
-    }
-  ],
-  "reviews": [
-    {
-      "id": "1",
-      "companyId": 1,
-      "rating": 4.5,
-      "title": "Great work culture and benefits",
-      "pros": "Excellent work-life balance, competitive salary, and great learning opportunities",
-      "cons": "Project deadlines can be tight sometimes",
-      "authorRole": "Senior Software Engineer",
-      "date": "2024-02-15",
-      "helpful": 25,
-      "experience": "3+ years at company",
-      "location": "San Francisco, CA",
-      "verified": true
     },
     {
-      "id": "2",
-      "companyId": 2,
-      "rating": 4,
-      "title": "Good company with room for improvement",
-      "pros": "Modern tech stack, friendly colleagues, good benefits",
-      "cons": "Communication between departments could be better",
-      "authorRole": "Product Manager",
-      "date": "2024-02-10",
-      "helpful": 18,
-      "experience": "2 years at company",
-      "location": "New York, NY",
-      "verified": true
+      "id": "1742040450711",
+      "name": "sravan",
+      "industry": "it",
+      "location": "hyd",
+      "description": "bad persons",
+      "logo": "https://c0.wallpaperflare.com/preview/923/582/564/silhouette-of-person-using-camera.jpg",
+      "benefits": [
+        "no"
+      ],
+      "salaryMin": "0",
+      "salaryMax": "20",
+      "slug": "sravan",
+      "salaryRange": {
+        "min": 0,
+        "max": 20,
+        "currency": "USD"
+      },
+      "rating": 0,
+      "reviewCount": 0
     },
     {
-      "id": "3",
-      "companyId": 3,
-      "rating": 4.8,
-      "title": "Fantastic learning environment",
-      "pros": "Cutting-edge technology, great mentorship, excellent compensation",
-      "cons": "Fast-paced environment might not suit everyone",
-      "authorRole": "Data Scientist",
-      "date": "2024-02-20",
-      "helpful": 32,
-      "experience": "1.5 years at company",
-      "location": "Boston, MA",
-      "verified": true
-    }
-  ],
-  "salaries": [
-    {
-      "id": "1",
-      "companyId": 1,
-      "role": "Senior Software Engineer",
-      "experience": "5-7 years",
-      "amount": 140000,
-      "currency": "USD",
-      "date": "2024-02-01",
-      "location": "San Francisco, CA",
-      "department": "Engineering"
+      "id": "1742040539872",
+      "name": "sravan",
+      "industry": "sfklj",
+      "location": "sdcfvgtbyhujikop",
+      "description": "kmijnuhybgtvf",
+      "logo": "https://c0.wallpaperflare.com/preview/923/582/564/silhouette-of-person-using-camera.jpg",
+      "benefits": [
+        "ghjkl"
+      ],
+      "salaryMin": "2",
+      "salaryMax": "4",
+      "slug": "sravan",
+      "salaryRange": {
+        "min": 2,
+        "max": 4,
+        "currency": "USD"
+      },
+      "rating": 0,
+      "reviewCount": 0
     },
     {
-      "id": "2",
-      "companyId": 2,
-      "role": "Product Manager",
-      "experience": "3-5 years",
-      "amount": 120000,
-      "currency": "USD",
-      "date": "2024-01-15",
-      "location": "New York, NY",
-      "department": "Product"
-    },
-    {
-      "id": "3",
-      "companyId": 3,
-      "role": "Data Scientist",
-      "experience": "2-4 years",
-      "amount": 130000,
-      "currency": "USD",
-      "date": "2024-02-10",
-      "location": "Boston, MA",
-      "department": "Data Science"
+      "id": "1742040800216",
+      "name": "sravan",
+      "industry": "wqx",
+      "location": "wsx",
+      "description": "sxz",
+      "logo": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1AVkwh.img?w=768&h=432&m=6",
+      "benefits": [
+        "qwxz"
+      ],
+      "salaryMin": "2",
+      "salaryMax": "4",
+      "slug": "sravan",
+      "salaryRange": {
+        "min": 2,
+        "max": 4,
+        "currency": "USD"
+      },
+      "rating": 0,
+      "reviewCount": 0
     }
   ]
 }

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Search as SearchIcon, Filter, Building2, MapPin, Users, DollarSign } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import CompanyCard from './Comanycard';
-import useCompanyStore from '../../pages/data/CompanyStore';
+// import useCompanyStore from '../../pages/data/CompanyStore';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();

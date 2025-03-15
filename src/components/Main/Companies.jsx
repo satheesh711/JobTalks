@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
 import CompanyCard from './Comanycard';
 import CompanyModal from './CompanyModel';
 import AddButton from './Addbutton';
-import { companies as initialCompanies } from '../../pages/data/data';
+import { addComapy, companies as companiesData } from '../../Services/companies';
 
 const Companies = () => {
-  const [companies, setCompanies] = useState(initialCompanies);
+  const [companies, setCompanies] = useState([]);
+
+    useEffect(() => {
+        Companies()
+    }, [companies])
+
+    const Companies = async () => {
+        try {
+            const data = await companiesData()
+            setCompanies(data)
+        }
+        catch (error) {
+            console.error("Error fetching Highest rated companies:", error)
+        }
+    }
+
+
   const [showAddModal, setShowAddModal] = useState(false);
   const [searchFilters, setSearchFilters] = useState({
     query: '',
@@ -26,22 +42,21 @@ const Companies = () => {
   const locations = Array.from(new Set(companies.map(company => company.location)));
 
   const handleAddCompany = (newCompany) => {
-    const companyWithId = {
-      ...newCompany,
-      id: companies.length + 1
-    };
-    setCompanies([...companies, companyWithId]);
+    addComapy(newCompany)
+    Companies()
   };
 
-  const filteredCompanies = companies.filter(company => {
-    const matchesQuery = company.name.toLowerCase().includes(searchFilters.query.toLowerCase()) ||
-                        company.description.toLowerCase().includes(searchFilters.query.toLowerCase());
-    const matchesIndustry = !searchFilters.industry || company.industry === searchFilters.industry;
-    const matchesLocation = !searchFilters.location || company.location === searchFilters.location;
-    const matchesRating = !searchFilters.rating || company.rating >= searchFilters.rating;
+  const filteredCompanies = companies?.filter(company => {
+    const matchesQuery = company?.name?.toLowerCase()?.includes(searchFilters?.query?.toLowerCase()) ||
+                         company?.description?.toLowerCase()?.includes(searchFilters?.query?.toLowerCase());
+
+    const matchesIndustry = !searchFilters?.industry || company?.industry === searchFilters?.industry;
+    const matchesLocation = !searchFilters?.location || company?.location === searchFilters?.location;
+    const matchesRating = !searchFilters?.rating || company?.rating >= searchFilters?.rating;
 
     return matchesQuery && matchesIndustry && matchesLocation && matchesRating;
-  });
+});
+
 
   const sortedCompanies = [...filteredCompanies].sort((a, b) => {
     if (sortBy === 'name') return a.name.localeCompare(b.name);
@@ -150,7 +165,6 @@ const Companies = () => {
           </button>
         ))}
       </div>
-
       <AddButton onClick={() => setShowAddModal(true)} />
       <CompanyModal
         show={showAddModal}

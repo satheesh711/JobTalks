@@ -1,9 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, MapPin, Users, Building } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CompanyCard = ({ company }) => {
+  const navigate = useNavigate()
+ const handleClick = ()=>
+  {
+      navigate(`/home/companies/${company.id}`)
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -12,7 +17,7 @@ const CompanyCard = ({ company }) => {
       whileHover={{ y: -5 }}
       className="card h-100 shadow-sm company-card"
     >
-      <div className="card-body">
+      <div className="card-body" onClick={handleClick}>
         <div className="d-flex align-items-center mb-3">
           <img
             src={company.logoUrl}
@@ -21,9 +26,7 @@ const CompanyCard = ({ company }) => {
             style={{ width: 60, height: 60, objectFit: 'cover' }}
           />
           <div>
-            <Link to={`/home/companies/${company.id}`} className="text-decoration-none">
-              <h5 className="card-title mb-1">{company.name}</h5>
-            </Link>
+              <h5 className="card-title mb-1 text-primary">{company.name}</h5>
             <span className="text-muted small">{company.industry}</span>
           </div>
         </div>

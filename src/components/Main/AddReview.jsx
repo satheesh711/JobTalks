@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Star, ArrowLeft } from 'lucide-react';
-import useCompanyStore from '../../pages/data/CompanyStore';
+// import useCompanyStore from '../../pages/data/CompanyStore';
 
 const AddReview = () => {
   const { id } = useParams();

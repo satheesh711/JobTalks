@@ -4,7 +4,7 @@ import { Star } from 'lucide-react';
 
 const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
   const [formData, setFormData] = useState({
-    companyId: '',
+    // companyId: '',
     rating: 5,
     title: '',
     pros: '',
@@ -46,7 +46,7 @@ const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
                 <select
                   className="form-select"
                   value={formData.companyId}
-                  onChange={(e) => setFormData({ ...formData, companyId: e.target.value })}
+                  // onChange={(e) => setFormData({ ...formData, companyId: e.target.value })}
                   required
                 >
                   <option value="">Select a company</option>
