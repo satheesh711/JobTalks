@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Building2, User, Settings, LogOut } from 'lucide-react';
+import { useIdContext } from './IdContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const id = location.state?.userId
+  const { setId } = useIdContext();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const userProfile = {
@@ -42,7 +45,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link 
-                className={`nav-link ${location.pathname === '/home/reviews' ? 'active' : ''}`}
+                className={`nav-link ${location.pathname === '/home/reviews' ? 'active' || setId(id) : ''}`}
                 to="/home/reviews"
               >
                 Reviews

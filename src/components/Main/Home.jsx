@@ -1,19 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Star, DollarSign, TrendingUp } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { companies as companiesData } from '../../Services/companies';
+import { useIdContext } from './IdContext';
 
 const Home = () => {
-
+  const location = useLocation();
+  const userId = location.state?.userId
   const [searchQuery, setSearchQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([])
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await companiesData();
+        setSuggestions(data);
+      } catch (error) {
+        console.error('Error fetching company data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const filteredSuggestions = suggestions.filter((company) =>
+    company.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/home/search?search=${encodeURIComponent(searchQuery)}`);
+      navigate(`/home/search?q=${encodeURIComponent(searchQuery)}`);
     }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery(suggestion.name);
+    navigate(`/home/search?q=${encodeURIComponent(suggestion.name)}`);
   };
 
   const containerVariants = {
@@ -78,6 +103,26 @@ const Home = () => {
                     <Search size={24} />
                   </button>
                 </div>
+                <div className="input-group input-group-lg">
+                {searchQuery && (
+                    <ul className="list-group position-absolute w-100 mt-2 shadow" style={{ zIndex: 10 }}>
+                      {filteredSuggestions.length > 0 ? (
+                        filteredSuggestions.slice(0, 5).map((company) => (
+                          <li
+                            key={company.id}
+                            className="list-group-item list-group-item-action"
+                            onClick={() => handleSuggestionClick(company)}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            {company.name}
+                          </li>
+                        ))
+                      ) : (
+                        <li className="list-group-item text-muted">No suggestions found</li>
+                      )}
+                    </ul>
+                  )}
+                  </div>
               </motion.form>
             </div>
             <motion.div 

@@ -79,8 +79,8 @@ export function SignupForm() {
       }
 
       toast.success('Successfully logged in with Google!');
-      sessionStorage.setItem("LoginStatus",true)
-      navigate('/home');
+      const id = await getUserId(result.user.email)
+      navigate('/home', {state:{userId:id}});
     } catch (error) {
       toast.error('Failed to login with Google');
       setUserExists("Failed to login with Google")

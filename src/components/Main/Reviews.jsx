@@ -1,63 +1,134 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ThumbsUp, Calendar, MapPin, Building2 } from 'lucide-react';
-import companiesData from '../../pages/data/companies.json';
+import { Star, ThumbsUp, Calendar, MapPin, Building2, Plus } from 'lucide-react';
+import { addReview, decrementLikes, getAllReviews, incrementLikes } from '../../Services/companies';
+import { useIdContext } from './IdContext';
+import AddButton from './Addbutton';
+import ReviewModal from './ReviewModel';
+import Select from 'react-select';
 
 const Reviews = () => {
   const [selectedCompany, setSelectedCompany] = useState('');
   const [sortBy, setSortBy] = useState('date');
+  const [companiesData, setCompaniesData] = useState([]);
+  const [likedReviews, setLikedReviews] = useState({});
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const { id } = useIdContext();
+  useEffect(() => {
+    AllReviews()
+  }, [])
 
-  const reviews = companiesData.reviews.filter(review => 
-    !selectedCompany || review.companyId === parseInt(selectedCompany)
-  ).sort((a, b) => {
-    if (sortBy === 'date') {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+  const AllReviews = async () => {
+    try {
+      const data = await getAllReviews()
+      setCompaniesData(data)
+      const likedData = {};
+      data.forEach((review) => {
+        if (review.likedBy && review.likedBy.includes(id)) {
+          likedData[review.id] = true;
+        }
+      });
+      setLikedReviews(likedData);
     }
-    return b.helpful - a.helpful;
-  });
+    catch (error) {
+      console.error("Error fetching Highest rated companies:", error)
+    }
+  }
+  let reviews = companiesData.filter(review => 
+    !selectedCompany || review.companyName === selectedCompany
+);
+
+switch (sortBy) {
+    case 'date':
+        reviews = [...reviews].sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
+
+    case 'helpful':
+        reviews = [...reviews].sort((a, b) => b.helpful - a.helpful);
+        break;
+
+    case 'good':
+        reviews = [...reviews]
+            .filter(review => review.rating >= 3)
+            .sort((a, b) => b.rating - a.rating)
+        break;
+
+    case 'bad':
+        reviews = [...reviews]
+            .filter(review => review.rating < 3)
+            .sort((a, b) => (b.rating-a.rating))
+        break;
+
+    default:
+        break;
+}
+  const companyOptions = Array.from(
+    new Map(companiesData.map((review) => [
+      review.companyId,
+      { value: review.companyName, label: review.companyName }
+    ])).values()
+  );
+
+  const handleHelpfulToggle = async (reviewId, companyId) => {
+    const isLiked = likedReviews[reviewId];
+
+    if (isLiked) {
+      await decrementLikes(reviewId, companyId, id);
+    } else {
+      await incrementLikes(reviewId, companyId, id);
+    }
+
+    setLikedReviews((prev) => ({
+      ...prev,
+      [reviewId]: !isLiked
+    }));
+
+    AllReviews();
+  };
+
+
+  const handleAddReview = async (review) => {
+    const id = review.companyId
+    delete review.companyId
+    await addReview({ ...review }, id);
+    setShowReviewModal(false);
+    AllReviews()
+  };
+
 
   return (
+
+
     <div className="container py-5">
       <div className="row mb-4">
         <div className="col-12">
           <h1 className="mb-4">Company Reviews</h1>
-          
-          <div className="card mb-4">
-            <div className="card-body">
-              <div className="row g-3">
-                <div className="col-md-8">
-                  <label className="form-label">Filter by Company</label>
-                  <select
-                    className="form-select"
-                    value={selectedCompany}
-                    onChange={(e) => setSelectedCompany(e.target.value)}
-                  >
-                    <option value="">All Companies</option>
-                    {companiesData.companies.map((company) => (
-                      <option key={company.id} value={company.id}>
-                        {company.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Sort by</label>
-                  <select
-                    className="form-select"
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                  >
-                    <option value="date">Most Recent</option>
-                    <option value="helpful">Most Helpful</option>
-                  </select>
-                </div>
-              </div>
+          <div className="row g-3 sticky-top bg-light shadow-sm mb-3" style={{ top: '70px', zIndex: 1020 }}>
+
+            <div className="col-md-8">
+              <Select
+                options={[{ value: '', label: 'All Companies' }, ...companyOptions]}
+                value={companyOptions.find((option) => option.value === selectedCompany)}
+                onChange={(selectedOption) => setSelectedCompany(selectedOption?.value || '')}
+                isSearchable
+                placeholder="Select or type a company..."
+              />
+            </div>
+            <div className="col-md-4">
+              <select
+                className="form-select"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="date">Most Recent</option>
+                <option value="helpful">Most Helpful</option>
+                <option value="good">3+ rating</option>
+                <option value="bad">below 3 rating</option>
+              </select>
             </div>
           </div>
 
           {reviews.map((review) => {
-            const company = companiesData.companies.find(c => c.id === review.companyId);
-            
             return (
               <motion.div
                 key={review.id}
@@ -71,9 +142,9 @@ const Reviews = () => {
                       <h5 className="card-title mb-1">{review.title}</h5>
                       <div className="d-flex align-items-center text-muted small">
                         <Building2 size={16} className="me-1" />
-                        <span className="me-3">{company?.name}</span>
-                        <MapPin size={16} className="me-1" />
-                        <span className="me-3">{review.location}</span>
+                        <span className="me-3">{review?.companyName}</span>
+                        {/* <MapPin size={16} className="me-1" /> */}
+                        {/* <span className="me-3">{review?.location}</span> */}
                         <Calendar size={16} className="me-1" />
                         <span>{new Date(review.date).toLocaleDateString()}</span>
                       </div>
@@ -110,8 +181,24 @@ const Reviews = () => {
                       )}
                     </div>
                     <div className="d-flex align-items-center">
-                      <ThumbsUp size={16} className="me-1" />
-                      <span>{review.helpful} found helpful</span>
+                      <motion.div
+                        initial={{ scale: 1 }}
+                        animate={{
+                          scale: likedReviews[review.id] ? 1.2 : 1,
+                        }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                        onClick={() => handleHelpfulToggle(review.id, review.companyId)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <ThumbsUp
+                          size={18}
+                          className="me-1"
+                          fill={likedReviews[review.id] ? '#FFD700' : 'none'}
+                          stroke={likedReviews[review.id] ? '#FFD700' : '#6c757d'}
+                        />
+                      </motion.div>
+
+                      <span>{review.helpful} times found helpful</span>
                     </div>
                   </div>
                 </div>
@@ -127,6 +214,18 @@ const Reviews = () => {
           )}
         </div>
       </div>
+      <AddButton onClick={() => setShowReviewModal(true)} />
+      <ReviewModal
+        show={showReviewModal}
+        onClose={() => setShowReviewModal(false)}
+        onSubmit={handleAddReview}
+        companies={Array.from(
+          new Map(companiesData.map((review) => [
+            review.companyId,         // Key (ensures uniqueness)
+            { id: review.companyId, name: review.companyName }  // Value (final object structure)
+          ])).values()
+        )}
+      />
     </div>
   );
 };

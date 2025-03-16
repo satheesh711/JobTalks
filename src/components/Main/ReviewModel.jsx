@@ -9,7 +9,8 @@ const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
     pros: '',
     cons: '',
     authorRole: '',
-    experience: ''
+    experience: '',
+    companyId:''
   });
 
   const handleSubmit = (e) => {
@@ -46,7 +47,7 @@ const ReviewModal = ({ show, onClose, onSubmit, companies }) => {
                 <select
                   className="form-select"
                   value={formData.companyId}
-                  // onChange={(e) => setFormData({ ...formData, companyId: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, companyId: e.target.value })}
                   required
                 >
                   <option value="">Select a company</option>

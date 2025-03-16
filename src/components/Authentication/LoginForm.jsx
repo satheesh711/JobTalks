@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
-import { checkUserExists, addUser, checkCredentials} from '../../Services/users';
+import { checkUserExists, addUser, checkCredentials, getUserId} from '../../Services/users';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -32,7 +32,6 @@ export function LoginForm() {
         toast.error('User not found. Please sign up first.');
         return;
       }
-      console.log(data)
       const checkCredential = await checkCredentials(data.email,data.password)
       if(!checkCredential)
       {
@@ -42,8 +41,8 @@ export function LoginForm() {
       }
       await signInWithEmailAndPassword(auth, data.email, data.password);
       toast.success('Successfully logged in!');
-      sessionStorage.setItem("LoginStatus",true)
-      navigate('/home');
+      const id = await getUserId(data.email)
+      navigate('/home', {state:{userId:id}});
     } catch (error) {
       setUserMessage("Invalid credentials email");
       toast.error('Invalid credentials');
@@ -72,8 +71,8 @@ export function LoginForm() {
       }
 
       toast.success('Successfully logged in with Google!');
-      sessionStorage.setItem("LoginStatus",true)
-      navigate('/home');
+      const id = await getUserId(result.user.email)
+      navigate('/home', {state:{userId:id}});
     } catch (error) {
       setUserMessage("Failed to login with Google")
       toast.error('Failed to login with Google');

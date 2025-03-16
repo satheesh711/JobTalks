@@ -4,7 +4,6 @@ import { Search as SearchIcon, Filter, Building2, MapPin, Users, DollarSign } fr
 import { useSearchParams } from 'react-router-dom';
 import CompanyCard from './Comanycard';
 import { companies as companiesData } from '../../Services/companies';
-// import useCompanyStore from '../../pages/data/CompanyStore';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -195,3 +194,4 @@ const Search = () => {
 };
 
 export default Search;
+ 

@@ -1,9 +1,9 @@
-import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "../../Services/isAuthenticated";
+// import { Navigate } from "react-router-dom";
+// import { isAuthenticated } from "../../Services/isAuthenticated";
 
-const AuthenticanGuard = ({ children }) => {
+// const AuthenticanGuard = ({ children }) => {
   
-  return isAuthenticated() ? children : <Navigate to="/login" />;
-};
+//   return isAuthenticated() ? children : <Navigate to="/login" />;
+// };
 
-export default AuthenticanGuard;
+// export default AuthenticanGuard;

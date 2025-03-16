@@ -7,6 +7,12 @@ export const getUsers = async () => {
   return response.data;
 };
 
+export const getUserId = async (email) =>
+{
+  const response = await getUsers()
+  return response.find(user => user.email === email).id
+}
+
 export const addUser = async (user) => {
   await axios.post(BASE_URL, user);
 };
