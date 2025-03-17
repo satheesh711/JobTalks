@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } f
 import { auth } from '../../Services/firebase';
 import { PasswordStrength } from './PasswordStrength';
 import { addUser, checkUserExists } from '../../Services/users';
+import { useIdContext } from '../Main/IdContext';
 
 const signupSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -25,6 +26,7 @@ export function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [userExists, setUserExists] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const { setId } = useIdContext();
   const navigate = useNavigate();
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     resolver: zodResolver(signupSchema),
@@ -80,7 +82,8 @@ export function SignupForm() {
 
       toast.success('Successfully logged in with Google!');
       const id = await getUserId(result.user.email)
-      navigate('/home', {state:{userId:id}});
+      setId(id)
+      navigate('/home');
     } catch (error) {
       toast.error('Failed to login with Google');
       setUserExists("Failed to login with Google")

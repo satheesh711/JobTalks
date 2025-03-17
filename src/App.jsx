@@ -67,12 +67,12 @@ function App() {
           <Route path="reviews" element={<Reviews />} />
           <Route path="search" element={<Search />} />
           <Route path="salaries" element={<Salaries />} />
-            <Route path="companies/:id" element={
+            <Route path="companies/:companyId" element={
           <ErrorBoundary>
               <CompanyProfile />
           </ErrorBoundary>
               } />
-            <Route path="companies/:id/review/new" element={
+            <Route path="companies/:comanyId/review/new" element={
           <ErrorBoundary>
               <AddReview />
           </ErrorBoundary>

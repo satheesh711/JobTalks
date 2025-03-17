@@ -1,18 +1,37 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Building2, User, Settings, LogOut } from 'lucide-react';
 import { useIdContext } from './IdContext';
 
 const Navbar = () => {
   const location = useLocation();
-  const id = location.state?.userId
-  const { setId } = useIdContext();
+  const navigate = useNavigate();
+  const locationUserId = location.state?.userId;
+  const { setId, id, clearId } = useIdContext();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  
+  useEffect(() => {
+    // If there's a userId in the location state and it's different from context
+    if (locationUserId && locationUserId !== id) {
+      setId(locationUserId);
+    }
+    
+    // If there's no user ID at all, redirect to login
+    if (!id && !locationUserId) {
+      // Uncomment this if you want to force login when no ID is found
+      navigate('/login', { replace: true });
+    }
+  }, [locationUserId, id, setId, navigate]);
 
   const userProfile = {
-    name: "name",
-    email: "email",
+    name: "name", // Ideally fetch this based on id
+    email: "email", // Ideally fetch this based on id
     avatar: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  };
+
+  const handleSignOut = () => {
+    clearId();
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -45,7 +64,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link 
-                className={`nav-link ${location.pathname === '/home/reviews' ? 'active' || setId(id) : ''}`}
+                className={`nav-link ${location.pathname === '/home/reviews' ? 'active': ''}`}
                 to="/home/reviews"
               >
                 Reviews
@@ -101,7 +120,7 @@ const Navbar = () => {
               </li>
               <li><hr className="dropdown-divider" /></li>
               <li>
-                <button className="dropdown-item d-flex align-items-center text-danger">
+                <button className="dropdown-item d-flex align-items-center text-danger" onClick={handleSignOut}>
                   <LogOut size={18} className="me-2" />
                   Sign Out
                 </button>

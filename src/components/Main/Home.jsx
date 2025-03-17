@@ -3,15 +3,13 @@ import { motion } from 'framer-motion';
 import { Search, Star, DollarSign, TrendingUp } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { companies as companiesData } from '../../Services/companies';
-import { useIdContext } from './IdContext';
 
 const Home = () => {
-  const location = useLocation();
-  const userId = location.state?.userId
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([])
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
