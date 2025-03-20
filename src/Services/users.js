@@ -6,7 +6,10 @@ export const getUsers = async () => {
   const response = await axios.get(BASE_URL);
   return response.data;
 };
-
+export const getUser = async (id) => {
+  const response = await axios.get(`${BASE_URL}/${id}`);
+  return response.data;
+};
 export const getUserId = async (email) =>
 {
   const response = await getUsers()
@@ -30,7 +33,7 @@ export const checkCredentials = async (email,password) => {
 export const guestLogin =async (defaultData={
   name: "Guest User",
   email: "guest@example.com",
-  method: "guest"
+  method: "guest",
 }) => {
   try {
     const response = await axios.get(BASE_URL);

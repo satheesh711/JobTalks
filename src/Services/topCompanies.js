@@ -1,8 +1,8 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3000/topCompanies";
+const BASE_URL = "http://localhost:3000/companies";
 
-// Get top 3 companies
 export const getTopCompaniesList = async () => {
   const response = await axios.get(BASE_URL);
-  return response.data;
-};
+  response.data.sort((a, b) => b.rating - a.rating);
+  return response.data.slice(0, 6);
+}

@@ -41,7 +41,7 @@ const CompanyReviews = ({ companyRef }) => {
                                     >
                                         <img src={company.logo} alt={company.company} className="img-fluid mb-3" style={{ height: "60px", objectFit: "contain" }} />
                                         <h5>{company.company}</h5>
-                                        <p className="flex-grow-1">{company.OverallReview}</p>
+                                        <p className="flex-grow-1">{company.description}</p>
                                         <div className="mt-auto">
                                             <Link to="/login" className="btn btn-outline-primary w-100">
                                                 View Details

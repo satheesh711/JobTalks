@@ -58,11 +58,9 @@ export function LoginForm() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      // Check if user exists in JSON server
       const userExists = await checkUserExists(result.user.email);
       
       if (!userExists) {
-        // Add user to JSON server if they don't exist
         const userData = {
           id: Date.now().toString(),
           name: result.user.displayName,

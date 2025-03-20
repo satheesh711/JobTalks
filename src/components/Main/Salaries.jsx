@@ -4,6 +4,7 @@ import { DollarSign, Building2, Briefcase, Clock } from 'lucide-react';
 import axios from 'axios';
 import { useIdContext } from './IdContext';
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
 
 const Salaries = () => {
   const [selectedCompany, setSelectedCompany] = useState('');
@@ -125,55 +126,67 @@ const Salaries = () => {
   return (
     <div className="container py-5">
       <div className="row mb-4">
-        <div className="col-12">
-          <h1 className="mb-4">Salary Insights</h1>
+        {/* <div className="col-12"> */}
+        <h1 className="mb-4">Salary Insights</h1>
 
-          <div className="card mb-4">
-            <div className="card-body">
-              <div className="row g-3">
-                <div className="col-md-4">
-                  <label className="form-label">Company</label>
-                  <select
-                    className="form-select"
-                    value={selectedCompany}
-                    onChange={(e) => setSelectedCompany(e.target.value)}
-                  >
-                    <option value="">All Companies</option>
-                    {companies.map((company) => (
-                      <option key={company.id} value={company.id}>
-                        {company.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Role</label>
-                  <select
-                    className="form-select"
-                    value={selectedRole}
-                    onChange={(e) => setSelectedRole(e.target.value)}
-                  >
-                    <option value="">All Roles</option>
-                    {allRoles.map((role) => (
-                      <option key={role.id} value={role.title}>{role.title}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <label className="form-label">Location</label>
-                  <select
-                    className="form-select"
-                    value={selectedLocation}
-                    onChange={(e) => setSelectedLocation(e.target.value)}
-                  >
-                    <option value="">All Locations</option>
-                    {allLocations.map((location) => (
-                      <option key={location} value={location}>{location}</option>
-                    ))}
-                  </select>
-                </div>
+        <div className="card mb-4">
+          <div className="card-body">
+            <div className="row g-3">
+              <div className="col-md-4">
+                <label className="form-label">Company</label>
+                <Select
+                  options={[{ value: '', label: 'All Companies' }, ...companies.map((company) => ({
+                    value: company.id,
+                    label: company.name
+                  }))]}
+                  value={companies.find((company) => company.id === selectedCompany)
+                    ? { value: selectedCompany, label: companies.find((company) => company.id === selectedCompany)?.name }
+                    : { value: '', label: 'All Companies' }
+                  }
+                  onChange={(selectedOption) => setSelectedCompany(selectedOption?.value || '')}
+                  isSearchable
+                  placeholder="Select or type a company..."
+                />
+
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Role</label>
+
+                <Select
+                  options={[{ value: '', label: 'All Roles' }, ...allRoles.map((role) => ({
+                    value: role.title,
+                    label: role.title
+                  }))]}
+                  value={selectedRole
+                    ? { value: selectedRole, label: selectedRole }
+                    : { value: '', label: 'All Roles' }
+                  }
+                  onChange={(selectedOption) => setSelectedRole(selectedOption?.value || '')}
+                  isSearchable
+                  placeholder="Select or type a role..."
+                />
+
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Location</label>
+
+                <Select
+                  options={[{ value: '', label: 'All Locations' }, ...allLocations.map((loc) => ({
+                    value: loc,
+                    label: loc
+                  }))]}
+                  value={selectedLocation
+                    ? { value: selectedLocation, label: selectedLocation }
+                    : { value: '', label: 'All Locations' }
+                  }
+                  onChange={(selectedOption) => setSelectedLocation(selectedOption?.value || '')}
+                  isSearchable
+                  placeholder="Select or type a location..."
+                />
+
               </div>
             </div>
+            {/* </div> */}
           </div>
 
           {filteredSalaries.length > 0 && (

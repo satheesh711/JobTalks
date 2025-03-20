@@ -4,11 +4,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/Logo.ico";
 import { guestLogin } from "../../Services/users";
+import { useIdContext } from "../Main/IdContext";
 
 const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
+    const { setId }= useIdContext();
     const closeNavbar = () => {
         const navbar = document.getElementById("navbarNav");
         if (navbar.classList.contains("show")) {
@@ -30,8 +31,9 @@ const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
             const check = await guestLogin();
             if(check)
             {
-            sessionStorage.setItem("LoginStatus", true);
+                
             setTimeout(() => {
+                setId(check.data.id);
                 setLoading(false);
                 navigate("/home");
 
@@ -136,7 +138,7 @@ const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
                                     className="nav-link btn btn-link text-decoration-none"
                                     onClick={() => scrollToSection(footerRef)}
                                 >
-                                    Footer
+                                    Contact us
                                 </button>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0 m-1">

@@ -1,7 +1,8 @@
-import axios from "axios";
-const BASE_URL = "http://localhost:3000/topRoles";
+import { getAllRoles } from "./companies";
 
 export const getTopRolesList = async () => {
-  const response = await axios.get(BASE_URL);
-  return response.data;
+  const response = await getAllRoles();
+  response.sort((a, b) => b.salaryRange.max - a.salaryRange.max);
+  console.log(response);
+  return response.slice(0, 6);
 };

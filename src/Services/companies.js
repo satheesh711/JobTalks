@@ -47,16 +47,17 @@ export const checkCompany = async (newCompany) => {
 }
 
 export const getAllRoles = async () => {
-  const companies = await getAllCompanies();
+  const companiesdata = await companies();
   const roles = [];
   
-  companies.forEach(company => {
+  companiesdata.forEach(company => {
     if (company.roles && Array.isArray(company.roles)) {
       company.roles.forEach(role => {
         // Add company information to each role
         roles.push({
           ...role,
           companyId: company.id,
+          companyLogo: company.logo,
           companyName: company.name,
           location: company.location
         });

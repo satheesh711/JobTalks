@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Building2, User, Settings, LogOut } from 'lucide-react';
 import { useIdContext } from './IdContext';
+import { getUser } from '../../Services/users';
 
 const Navbar = () => {
   const location = useLocation();
@@ -11,24 +12,32 @@ const Navbar = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   
   useEffect(() => {
-    // If there's a userId in the location state and it's different from context
     if (locationUserId && locationUserId !== id) {
       setId(locationUserId);
     }
     
-    // If there's no user ID at all, redirect to login
     if (!id && !locationUserId) {
-      // Uncomment this if you want to force login when no ID is found
       navigate('/login', { replace: true });
     }
   }, [locationUserId, id, setId, navigate]);
 
-  const userProfile = {
-    name: "name", // Ideally fetch this based on id
-    email: "email", // Ideally fetch this based on id
+  const [userProfile,setuserProfile] =  useState( {
+    name: "",  
+    email: "",
     avatar: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  });
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const data = await getUser(id);
+      console.log(data);
+      setuserProfile({name: data.name, email: data.email, avatar: userProfile.avatar});
+    } catch (error) {
+      console.error('Error fetching company data:', error);
+    }
   };
-
+  fetchData();
+}, []);
   const handleSignOut = () => {
     clearId();
     navigate('/login', { replace: true });
