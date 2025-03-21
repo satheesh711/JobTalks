@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../../assets/Logo1.ico";
+import logo from "../../assets/logo1.ico";
 import { guestLogin } from "../../Services/users";
 
 const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
