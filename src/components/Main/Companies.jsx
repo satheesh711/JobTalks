@@ -5,9 +5,17 @@ import CompanyCard from './Comanycard';
 import CompanyModal from './CompanyModel';
 import AddButton from './Addbutton';
 import { addComapy, companies as companiesData } from '../../Services/companies';
+import { useLocation } from 'react-router-dom';
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
+  const [userid, setUserId] = useState(null);
+  const location = useLocation();
+  const locationUserId = location.state?.id;
+  
+  useEffect(() => {
+    setUserId(locationUserId);  
+  }, [locationUserId]);
 
     useEffect(() => {
         Companies()
@@ -39,7 +47,6 @@ const Companies = () => {
   const [sortBy, setSortBy] = useState('name');
 
   const industries = Array.from(new Set(companies.map(company => company.industry)));
-  const locations = Array.from(new Set(companies.map(company => company.location)));
 
   const handleAddCompany = async(newCompany) => {
     await addComapy(newCompany)
@@ -143,7 +150,7 @@ const Companies = () => {
       <div className="row g-4">
         {currentCompanies.map((company) => (
           <div key={company.id} className="col-md-6">
-            <CompanyCard company={company} />
+            <CompanyCard company={company} id ={userid}/>
           </div>
         ))}
         {currentCompanies.length === 0 && (

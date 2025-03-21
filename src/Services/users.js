@@ -10,6 +10,11 @@ export const getUser = async (id) => {
   const response = await axios.get(`${BASE_URL}/${id}`);
   return response.data;
 };
+
+export const updateUser = async (id, data) => {
+  await axios.put(`${BASE_URL}/${id}`, data);
+};
+
 export const getUserId = async (email) =>
 {
   const response = await getUsers()

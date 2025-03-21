@@ -2,14 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../../assets/Logo.ico";
+import logo from "../../assets/Logo1.png";
 import { guestLogin } from "../../Services/users";
-import { useIdContext } from "../Main/IdContext";
 
 const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const { setId }= useIdContext();
     const closeNavbar = () => {
         const navbar = document.getElementById("navbarNav");
         if (navbar.classList.contains("show")) {
@@ -33,9 +31,8 @@ const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
             {
                 
             setTimeout(() => {
-                setId(check.data.id);
                 setLoading(false);
-                navigate("/home");
+                navigate("/home" , { state: { id: check.data.id } });
 
                 toast.success(" Logged in as Guest", {
                     position: "top-right",
@@ -87,13 +84,15 @@ const Navbar = ({ homeRef, aboutRef, companyRef, roleRef, footerRef }) => {
 
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
                 <div className="container">
-                    <img src={logo} alt="Logo" className="opacity-75 rounded-circle" />
+                    <div>
+                    <img src={logo} alt="Logo" className="rounded-circle" style={{width:"37px"}}/>
                     <button
                         className="navbar-brand fw-bold fs-4 m-2 btn btn-link text-decoration-none"
                         onClick={() => scrollToSection(homeRef)}
                     >
                         JobTalks
                     </button>
+                    </div>
 
                     <button
                         className="navbar-toggler"

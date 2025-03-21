@@ -32,7 +32,8 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
         currency: 'USD'
       },
       rating: 0,
-      reviewCount: 0
+      reviewCount: 0,
+      roles: []
     }
 
 

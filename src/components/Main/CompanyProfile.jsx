@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Star, MapPin, Users, Building2, DollarSign, Plus, Calendar, ThumbsUp, Briefcase, Clock } from 'lucide-react';
+import { Star, MapPin, Users, Building2,Plus, Calendar, ThumbsUp, Briefcase, Clock } from 'lucide-react';
 import ReviewModal from './ReviewModel';
 import LoadingSpinner from './LoadingSpinner';
 import { addReview, decrementLikes, getCompanyByid, getCompanyReviews, getCompanyRoles, incrementLikes } from '../../Services/companies';
 import StarRating from './StarRating';
-import { useIdContext } from './IdContext';
 
 const CompanyProfile = () => {
   const { companyId } = useParams();
@@ -18,7 +17,12 @@ const CompanyProfile = () => {
   const [sortBy, setSortBy] = useState('date');
   const [likedReviews, setLikedReviews] = useState({});
   const [selectedDepartment, setSelectedDepartment] = useState('');
-  const { id } = useIdContext();
+  const [id, setId] = useState(null);
+  const location = useLocation();
+  const locationUserId = location.state?.id;
+  useEffect(() => {
+    setId(locationUserId);
+  }, [locationUserId]);
 
   useEffect(() => {
     loadCompany();
@@ -98,22 +102,19 @@ const CompanyProfile = () => {
   };
 
   const filteredRoles = React.useMemo(() => {
-    return roles.filter(role => {
+    return roles?.filter(role => {
       const matchesDepartment = !selectedDepartment || role.department === selectedDepartment;
       return matchesDepartment;
     });
   }, [roles, selectedDepartment]);
 
   const departments = React.useMemo(() => {
-    return Array.from(new Set(roles.map(role => role.department)));
-  }, [roles]);
-
-  const experienceLevels = React.useMemo(() => {
-    return Array.from(new Set(roles.map(role => role.experience)));
+    return Array.from(new Set(roles?.map(role => role.department)));
   }, [roles]);
 
   const averageSalary = React.useMemo(() => {
-    if (filteredRoles.length === 0) return 0;
+    if (!filteredRoles || filteredRoles?.length === 0) 
+      return 0;
     const total = filteredRoles.reduce((acc, role) => {
       return acc + ((role.salaryRange.min + role.salaryRange.max) / 2);
     }, 0);
@@ -347,7 +348,7 @@ const CompanyProfile = () => {
             <div>
               <h3 className="mb-4">Roles & Salary Information</h3>
 
-              {filteredRoles.length > 0 && (
+              {(filteredRoles || filteredRoles?.length > 0 )&& (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -366,7 +367,7 @@ const CompanyProfile = () => {
               )}
 
               <div className="row g-4">
-                {filteredRoles.map((role) => (
+                {filteredRoles?.map((role) => (
                   <motion.div
                     key={role.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -384,8 +385,6 @@ const CompanyProfile = () => {
                             <div className="d-flex align-items-center text-muted small mb-2">
                               <Clock size={16} className="me-2" />
                               <span className="me-3">{role.department}</span>
-                              <Users size={16} className="me-2" />
-                              <span>{role.experience}</span>
                             </div>
                             {role.requirements && (
                               <div className="mt-3">
@@ -420,7 +419,7 @@ const CompanyProfile = () => {
                 ))}
               </div>
 
-              {filteredRoles.length === 0 && (
+              {(!filteredRoles || filteredRoles.length === 0) && (
                 <div className="text-center py-5">
                   <h3>No roles found</h3>
                   <p className="text-muted">Try adjusting your filters</p>

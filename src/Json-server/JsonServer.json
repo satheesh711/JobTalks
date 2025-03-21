@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "name": "Guest User",
-      "email": "guest@example.com",
-      "method": "guest",
-      "id": "1741526384658"
-    },
-    {
       "name": "satheesh",
       "id": "614a"
     },
@@ -21,13 +15,21 @@
       "id": "1741527906661",
       "name": "Sira Satheesh",
       "email": "satheessira@gmail.com",
-      "method": "google"
+      "method": "google",
+      "role": "software",
+      "experience": "3-5 years"
     },
     {
       "id": "1742134761468",
       "name": "MANIDEEP PARLAPALLI",
       "email": "manideepparlapalli@gmail.com",
       "method": "google"
+    },
+    {
+      "name": "Guest User",
+      "email": "guest@example.com",
+      "method": "guest",
+      "id": "1742558403776"
     }
   ],
   "companies": [
@@ -79,8 +81,10 @@
           "experience": "4 years",
           "date": "2025-03-15",
           "id": "20250315181029436",
-          "helpful": 0,
-          "likedBy": [],
+          "helpful": 1,
+          "likedBy": [
+            "1741527906661"
+          ],
           "verified": true,
           "location": ""
         }
@@ -90,6 +94,9 @@
           "id": "5345678",
           "title": "Frontend Developer",
           "department": "Engineering",
+          "level": "Mid-Level",
+          "type": "Full-Time",
+          "location": "Menlo Park, CA",
           "salaryRange": {
             "min": 110000,
             "max": 160000,
@@ -170,6 +177,9 @@
           "id": "623",
           "title": "Content Strategist",
           "department": "Content",
+          "level": "Mid-Level",
+          "type": "Full-Time",
+          "location": "Los Gatos, CA",
           "salaryRange": {
             "min": 110000,
             "max": 170000,
@@ -278,6 +288,9 @@
           "id": "31073",
           "title": "Cloud Solutions Architect",
           "department": "Engineering",
+          "location": "Redmond, WA",
+          "level": "intern",
+          "type": "intership",
           "salaryRange": {
             "min": 140000,
             "max": 190000,
@@ -358,6 +371,9 @@
           "id": "423456",
           "title": "Hardware Engineer",
           "department": "Engineering",
+          "location": "Cupertino, CA",
+          "level": "intern",
+          "type": "intership",
           "salaryRange": {
             "min": 120000,
             "max": 180000,
@@ -454,6 +470,9 @@
           "id": "10654",
           "title": "Software Engineer",
           "department": "Engineering",
+          "location": "Mountain View, CA",
+          "level": "part-time",
+          "type": "part-time",
           "salaryRange": {
             "min": 130000,
             "max": 180000,
@@ -537,12 +556,10 @@
           "experience": "3 years",
           "date": "2025-03-16",
           "id": "20250316164528270",
-          "helpful": 1,
+          "helpful": 0,
           "verified": true,
           "location": "",
-          "likedBy": [
-            "1741527906661"
-          ]
+          "likedBy": []
         }
       ],
       "roles": [
@@ -550,6 +567,9 @@
           "id": "2129",
           "title": "Data Analyst",
           "department": "Analytics",
+          "location": "Seattle, WA",
+          "level": "senior",
+          "type": "full-time",
           "salaryRange": {
             "min": 100000,
             "max": 140000,
@@ -632,6 +652,9 @@
           "id": "19432",
           "title": "Senior Software Engineer",
           "department": "Engineering",
+          "location": "San Francisco, CA",
+          "level": "senior",
+          "type": "full-time",
           "salaryRange": {
             "min": 130000,
             "max": 180000,
@@ -657,6 +680,9 @@
           "id": "20843",
           "title": "Product Manager",
           "department": "Product",
+          "location": "San Francisco, CA",
+          "level": "mid-level",
+          "type": "full-time",
           "salaryRange": {
             "min": 120000,
             "max": 160000,
@@ -739,6 +765,9 @@
           "id": "33456",
           "title": "Full Stack Developer",
           "department": "Engineering",
+          "location": "New York, NY",
+          "level": "mid-level",
+          "type": "full-time",
           "salaryRange": {
             "min": 100000,
             "max": 150000,
@@ -764,6 +793,9 @@
           "id": "4987",
           "title": "UX Designer",
           "department": "Design",
+          "location": "New York, NY",
+          "level": "mid-level",
+          "type": "full-time",
           "salaryRange": {
             "min": 90000,
             "max": 130000,
@@ -844,6 +876,9 @@
           "id": "513",
           "title": "Data Scientist",
           "department": "Data Science",
+          "location": "Boston, MA",
+          "level": "enty-level",
+          "type": "contract",
           "salaryRange": {
             "min": 120000,
             "max": 170000,
@@ -869,6 +904,9 @@
           "id": "687",
           "title": "Machine Learning Engineer",
           "department": "AI/ML",
+          "location": "Boston, MA",
+          "level": "mid-level",
+          "type": "full-time",
           "salaryRange": {
             "min": 130000,
             "max": 180000,
@@ -910,8 +948,68 @@
         "max": 7,
         "currency": "USD"
       },
-      "rating": 0,
-      "reviewCount": 0
+      "rating": 2,
+      "reviewCount": 1,
+      "roles": [
+        {
+          "title": "software",
+          "department": "it",
+          "level": "Entry",
+          "type": "Full-time",
+          "location": "Hyderabad",
+          "salaryRange": {
+            "min": "1000",
+            "max": "1991"
+          },
+          "requirements": [
+            "java"
+          ],
+          "responsibilities": [
+            "backend"
+          ],
+          "benefits": [
+            "health"
+          ],
+          "id": "20250320165643249"
+        },
+        {
+          "title": "consontant",
+          "department": "non it",
+          "level": "Lead",
+          "type": "Full-time",
+          "location": "Hyderabad",
+          "salaryRange": {
+            "min": "234",
+            "max": "7410"
+          },
+          "requirements": [
+            "nothing"
+          ],
+          "responsibilities": [
+            "leading"
+          ],
+          "benefits": [
+            "traveling "
+          ],
+          "id": "20250320170434677"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 2,
+          "title": "today",
+          "pros": "nothing",
+          "cons": "bad",
+          "authorRole": "student",
+          "experience": "10",
+          "date": "2025-03-21",
+          "id": "20250321163155408",
+          "helpful": 0,
+          "verified": true,
+          "location": "",
+          "likedBy": []
+        }
+      ]
     },
     {
       "id": "20250315183216539",

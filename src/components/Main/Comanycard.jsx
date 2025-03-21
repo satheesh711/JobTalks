@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, MapPin, Users, Building } from 'lucide-react';
+import { Star, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const CompanyCard = ({ company }) => {
+const CompanyCard = ({ company, id}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/home/companies/${company.id}`);
+    navigate(`/home/companies/${company.id}`, { state: { id } });
   };
 
   return (
@@ -19,7 +19,6 @@ const CompanyCard = ({ company }) => {
       className="card h-100 shadow-sm company-card border-0"
     >
       <div className="card-body p-4" onClick={handleClick}>
-        {/* Header */}
         <div className="d-flex align-items-center mb-3">
           <img
             src={company.logo}
@@ -33,12 +32,10 @@ const CompanyCard = ({ company }) => {
           </div>
         </div>
 
-        {/* Description */}
         <p className="card-text text-truncate" style={{ maxHeight: '3rem' }}>
           {company.description}
         </p>
 
-        {/* Ratings & Location */}
         <div className="d-flex justify-content-between align-items-center mb-3">
           <div className="d-flex align-items-center">
             <Star className="text-warning me-2" size={18} />
@@ -52,7 +49,6 @@ const CompanyCard = ({ company }) => {
           </div>
         </div>
 
-        {/* Benefits */}
         {company.benefits && (
           <div className="d-flex flex-wrap gap-2">
             {company.benefits.slice(0, 3).map((benefit, index) => (
@@ -69,7 +65,6 @@ const CompanyCard = ({ company }) => {
         )}
       </div>
 
-      {/* Footer */}
     </motion.div>
   );
 };

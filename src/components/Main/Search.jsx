@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search as SearchIcon, Filter, Building2, MapPin, Users, DollarSign } from 'lucide-react';
+import { Search as SearchIcon, Filter, Building2} from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import CompanyCard from './Comanycard';
 import { companies as companiesData } from '../../Services/companies';

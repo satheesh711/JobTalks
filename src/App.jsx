@@ -1,4 +1,3 @@
-import { ToastContainer } from 'react-toastify';
 import { AuthLayout } from './components/Authentication/AthenticationLayout';
 import { LoginForm } from './components/Authentication/LoginForm';
 import { SignupForm } from './components/Authentication/SignupForm';
@@ -13,7 +12,7 @@ import CompanyProfile from './components/Main/CompanyProfile';
 import ErrorBoundary from './components/Main/ErrorBoundary';
 import AddReview from './components/Main/AddReview';
 import Search from './components/Main/Search';
-import { IdProvider } from './components/Main/IdContext';
+import ProfilePage from './components/Main/Profile';
 
 const AuthenticatedLayout = () => (
   <div className="min-vh-100 d-flex flex-column">
@@ -27,7 +26,6 @@ const AuthenticatedLayout = () => (
 function App() {
   return (
     <>
-<IdProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Landing />
@@ -67,6 +65,7 @@ function App() {
           <Route path="reviews" element={<Reviews />} />
           <Route path="search" element={<Search />} />
           <Route path="salaries" element={<Salaries />} />
+          <Route path='profile' element={<ProfilePage />} />
             <Route path="companies/:companyId" element={
           <ErrorBoundary>
               <CompanyProfile />
@@ -82,8 +81,6 @@ function App() {
 
       </Routes>
     </Router>
-    </IdProvider>
-    <ToastContainer />
 
     </>
   );

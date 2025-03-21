@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, ThumbsUp, Calendar, MapPin, Building2, Plus } from 'lucide-react';
-import { addReview, decrementLikes, getAllReviews, incrementLikes } from '../../Services/companies';
-import { useIdContext } from './IdContext';
+import { Star, ThumbsUp, Calendar,  Building2 } from 'lucide-react';
+import { addReview, companies, decrementLikes, getAllReviews, incrementLikes } from '../../Services/companies';
 import AddButton from './Addbutton';
 import ReviewModal from './ReviewModel';
 import Select from 'react-select';
+import { useLocation } from 'react-router-dom';
+import { set } from 'react-hook-form';
 
 const Reviews = () => {
   const [selectedCompany, setSelectedCompany] = useState('');
@@ -13,7 +14,13 @@ const Reviews = () => {
   const [companiesData, setCompaniesData] = useState([]);
   const [likedReviews, setLikedReviews] = useState({});
   const [showReviewModal, setShowReviewModal] = useState(false);
-  const { id } = useIdContext();
+  const [id, setId] = useState(null);
+  const location = useLocation();
+  const locationUserId = location.state?.id;
+  const [allcompanies, setAllCompanies] = useState([]);
+  useEffect(() => {
+    setId(locationUserId);
+  }, [locationUserId]);
   useEffect(() => {
     AllReviews()
   }, [])
@@ -29,6 +36,8 @@ const Reviews = () => {
         }
       });
       setLikedReviews(likedData);
+      const alldata=await companies()
+      setAllCompanies(alldata)
     }
     catch (error) {
       console.error("Error fetching Highest rated companies:", error)
@@ -62,12 +71,13 @@ switch (sortBy) {
     default:
         break;
 }
-  const companyOptions = Array.from(
-    new Map(companiesData.map((review) => [
-      review.companyId,
-      { value: review.companyName, label: review.companyName }
-    ])).values()
-  );
+
+const companyOptions = Array.from(
+  new Map(companiesData.map(({ companyId, companyName }) => [
+      companyId,
+      { value: companyName, label: companyName }
+  ])).values()
+);
 
   const handleHelpfulToggle = async (reviewId, companyId) => {
     const isLiked = likedReviews[reviewId];
@@ -143,8 +153,6 @@ switch (sortBy) {
                       <div className="d-flex align-items-center text-muted small">
                         <Building2 size={16} className="me-1" />
                         <span className="me-3">{review?.companyName}</span>
-                        {/* <MapPin size={16} className="me-1" /> */}
-                        {/* <span className="me-3">{review?.location}</span> */}
                         <Calendar size={16} className="me-1" />
                         <span>{new Date(review.date).toLocaleDateString()}</span>
                       </div>
@@ -220,9 +228,9 @@ switch (sortBy) {
         onClose={() => setShowReviewModal(false)}
         onSubmit={handleAddReview}
         companies={Array.from(
-          new Map(companiesData.map((review) => [
-            review.companyId,         // Key (ensures uniqueness)
-            { id: review.companyId, name: review.companyName }  // Value (final object structure)
+          new Map(allcompanies.map((review) => [
+            review.id,          
+            { id: review.id, name: review.name }   
           ])).values()
         )}
       />

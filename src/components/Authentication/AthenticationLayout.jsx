@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import loginImg from "../../assets/login1.jpg";
+import loginImg from "../../assets/logo1.ico"
 
 export function AuthLayout({ children, title, subtitle }) {
   const [childKey, setChildKey] = useState(0);
@@ -36,7 +36,7 @@ export function AuthLayout({ children, title, subtitle }) {
   return (
     <div className="min-vh-100 d-flex align-items-center justify-content-center">
 
-      <div className="d-flex flex-column flex-lg-row w-100" style={{ maxWidth: '68rem' }}>
+      <div className="d-flex flex-column flex-lg-row w-100 gap-5" style={{ maxWidth: '68rem' }}>
         
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -48,11 +48,11 @@ export function AuthLayout({ children, title, subtitle }) {
             transition: 'height 0.5s ease-in-out'
           }}
         >
-          <div className="w-100 h-100 rounded overflow-hidden">
+          <div className="rounded overflow-hidden">
             <motion.img
               src={loginImg}
               alt="Login background"
-              className="w-100 h-100 object-fit-cover"
+              className=" object-fit-cover"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}

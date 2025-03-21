@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { set, useForm } from 'react-hook-form';
+import {  useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
@@ -9,7 +9,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
 import { checkUserExists, addUser, checkCredentials, getUserId} from '../../Services/users';
-import { useIdContext } from '../Main/IdContext';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -18,7 +17,6 @@ const loginSchema = z.object({
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { setId } = useIdContext();
   const navigate = useNavigate();
   const [userMessage, setUserMessage] = useState("");
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -44,8 +42,7 @@ export function LoginForm() {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       toast.success('Successfully logged in!');
       const id = await getUserId(data.email)
-      setId(id)
-      navigate('/home');
+      navigate('/home' ,  { state: { id } });
     } catch (error) {
       setUserMessage("Invalid credentials email");
       toast.error('Invalid credentials');
@@ -72,8 +69,7 @@ export function LoginForm() {
 
       toast.success('Successfully logged in with Google!');
       const id = await getUserId(result.user.email)
-      setId(id)
-      navigate('/home', id);
+      navigate('/home', { state: { id } });
     } catch (error) {
       setUserMessage("Failed to login with Google")
       toast.error('Failed to login with Google');

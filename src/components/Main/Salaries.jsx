@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, Building2, Briefcase, Clock } from 'lucide-react';
-import axios from 'axios';
-import { useIdContext } from './IdContext';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import AddButton from './Addbutton';
+import { addRole, companies as getCompanies } from '../../Services/companies';
+import RoleModel from './RoleModel';
 
 const Salaries = () => {
   const [selectedCompany, setSelectedCompany] = useState('');
@@ -13,34 +13,39 @@ const Salaries = () => {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { id } = useIdContext();
+  const [showRoleModal, setShowRoleModal] = useState(false);
+  
 
-  // Fetch company data
+const handleAddRole = async (role) => {
+    const id = role.companyId
+    delete role.companyId
+    await addRole({ ...role }, id);
+    setShowRoleModal(false);
+    fetchCompanies()
+  };
+  const fetchCompanies = async () => {
+    try {
+      setLoading(true);
+      const response = await getCompanies();
+      setCompanies(response);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching companies:", err);
+      setError("Failed to load company data. Please try again later.");
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchCompanies = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get('http://localhost:3000/companies');
-        setCompanies(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching companies:", err);
-        setError("Failed to load company data. Please try again later.");
-        setLoading(false);
-      }
-    };
-
     fetchCompanies();
   }, []);
 
-  // Extract all roles and format them for display
   const allRoles = React.useMemo(() => {
     const roles = [];
     companies.forEach(company => {
       if (company.roles && Array.isArray(company.roles)) {
         company.roles.forEach(role => {
           if (!roles.some(r => r.title === role.title)) {
-            roles.push(role);
+            roles.push({...role});
           }
         });
       }
@@ -48,19 +53,16 @@ const Salaries = () => {
     return roles;
   }, [companies]);
 
-  // Extract all unique locations
   const allLocations = React.useMemo(() => {
     return Array.from(new Set(companies.map(company => company.location)));
   }, [companies]);
 
-  // Generate salary insights data from companies and roles
   const salaryInsights = React.useMemo(() => {
     const insights = [];
 
     companies.forEach(company => {
       if (company.roles && Array.isArray(company.roles)) {
         company.roles.forEach(role => {
-          // Create a salary insight for the average of the role's salary range
           const avgSalary = (role.salaryRange.min + role.salaryRange.max) / 2;
 
           insights.push({
@@ -72,11 +74,11 @@ const Salaries = () => {
             amount: avgSalary,
             minAmount: role.salaryRange.min,
             maxAmount: role.salaryRange.max,
-            location: company.location,
+            location: role.location,
             experience: "Based on role requirements",
             benefits: role.benefits,
             requirements: role.requirements,
-            date: new Date().toISOString(), // Using current date since actual date isn't available
+            date: new Date().toISOString(), 
             currency: role.salaryRange.currency || "USD"
           });
         });
@@ -86,7 +88,6 @@ const Salaries = () => {
     return insights;
   }, [companies]);
 
-  // Filter salary insights based on selections
   const filteredSalaries = React.useMemo(() => {
     return salaryInsights.filter(salary => {
       const matchesCompany = !selectedCompany || salary.companyId === selectedCompany;
@@ -96,7 +97,6 @@ const Salaries = () => {
     });
   }, [salaryInsights, selectedCompany, selectedRole, selectedLocation]);
 
-  // Calculate average salary from filtered salaries
   const averageSalary = React.useMemo(() => {
     if (filteredSalaries.length === 0) return 0;
     return Math.round(filteredSalaries.reduce((acc, curr) => acc + curr.amount, 0) / filteredSalaries.length);
@@ -126,7 +126,6 @@ const Salaries = () => {
   return (
     <div className="container py-5">
       <div className="row mb-4">
-        {/* <div className="col-12"> */}
         <h1 className="mb-4">Salary Insights</h1>
 
         <div className="card mb-4">
@@ -186,7 +185,6 @@ const Salaries = () => {
 
               </div>
             </div>
-            {/* </div> */}
           </div>
 
           {filteredSalaries.length > 0 && (
@@ -208,7 +206,6 @@ const Salaries = () => {
           )}
 
           {filteredSalaries.map((salary) => {
-            const company = companies.find(c => c.id === salary.companyId);
 
             return (
               <motion.div
@@ -220,15 +217,13 @@ const Salaries = () => {
                 <div className="card-body">
                   <div className="row align-items-center">
                     <div className="col-md-6">
-                      <div className="d-flex align-items-center mb-2">
-                        <Building2 size={20} className="text-primary me-2" />
-                        <h5 className="mb-0">{salary.companyName}</h5>
-                      </div>
+                        <h4 className="me-3">{salary.role}</h4>
                       <div className="d-flex align-items-center text-muted small mb-2">
-                        <Briefcase size={16} className="me-2" />
-                        <span className="me-3">{salary.role}</span>
-                        <Clock size={16} className="me-2" />
-                        <span>{salary.department}</span>
+                      <div className="d-flex align-items-center mb-2">
+                        <h6 className="mb-0 text-dark me-1">{salary.companyName}</h6>
+                        <span >{`(${salary.department})`}</span>
+                      </div>
+                        
                       </div>
                       <div className="text-muted small mb-2">
                         {salary.location}
@@ -248,7 +243,6 @@ const Salaries = () => {
                     </div>
                     <div className="col-md-6 text-md-end mt-3 mt-md-0">
                       <div className="d-flex align-items-center justify-content-md-end">
-                        {/* <DollarSign size={24} className="text-success me-2" /> */}
                         <h4 className="mb-0 text-success">
                           ${Math.round(salary.amount).toLocaleString()}
                         </h4>
@@ -279,6 +273,13 @@ const Salaries = () => {
           )}
         </div>
       </div>
+      <AddButton onClick={() => setShowRoleModal(true)} />
+      <RoleModel
+        show={showRoleModal}
+        onClose={() => setShowRoleModal(false)}
+        onSubmit={handleAddRole}
+        companiesdata={companies}
+      />
     </div>
   );
 };
