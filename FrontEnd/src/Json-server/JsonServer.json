@@ -1,0 +1,1251 @@
+{
+  "users": [
+    {
+      "name": "satheesh",
+      "id": "614a"
+    },
+    {
+      "id": "1741526835532",
+      "name": "manideep",
+      "email": "manideep@gmail.com",
+      "password": "Satheesg@",
+      "method": "email"
+    },
+    {
+      "id": "1741527906661",
+      "name": "Sira Satheesh",
+      "email": "satheessira@gmail.com",
+      "method": "google",
+      "role": "Other",
+      "experience": "Fresher",
+      "occupation": "Other",
+      "location": "Hyderabad, Telangana, IND",
+      "phone": "7897897895"
+    },
+    {
+      "id": "1742134761468",
+      "name": "MANIDEEP PARLAPALLI",
+      "email": "manideepparlapalli@gmail.com",
+      "method": "google"
+    },
+    {
+      "name": "Guest User",
+      "email": "guest@example.com",
+      "method": "guest",
+      "id": "1742558403776"
+    }
+  ],
+  "companies": [
+    {
+      "id": "53",
+      "name": "Facebook",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+      "industry": "Social Media",
+      "rating": 3.75,
+      "reviewCount": 4,
+      "location": "Menlo Park, CA",
+      "description": "Leading social media platform with a focus on connecting people globally.",
+      "benefits": [
+        "Health Insurance",
+        "Free Meals",
+        "Employee Discount",
+        "On-site Gym"
+      ],
+      "salaryRange": {
+        "min": 90000,
+        "max": 180000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "5",
+          "rating": 4,
+          "title": "Great company with exciting projects",
+          "pros": "Collaborative work environment, impactful projects, and strong learning opportunities.",
+          "cons": "Fast-paced environment requires adaptability.",
+          "authorRole": "Frontend Developer",
+          "date": "2024-02-28",
+          "helpful": 1,
+          "likedBy": [
+            "1742134761468"
+          ],
+          "experience": "3 years at company",
+          "location": "Menlo Park, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 5,
+          "title": "Good packages",
+          "pros": "god",
+          "cons": "bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315181029436",
+          "helpful": 1,
+          "likedBy": [
+            "1741527906661"
+          ],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 5,
+          "title": "sdfghjkl",
+          "pros": "qwertyhjkl/",
+          "cons": "bad",
+          "authorRole": "student",
+          "experience": "10",
+          "date": "2025-03-22",
+          "id": "20250322085151907",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 1,
+          "title": "f",
+          "pros": "f",
+          "cons": "f",
+          "authorRole": "f",
+          "experience": "f",
+          "date": "2025-03-22",
+          "id": "20250322103941814",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        }
+      ],
+      "roles": [
+        {
+          "id": "5345678",
+          "title": "Frontend Developer",
+          "department": "Engineering",
+          "level": "Mid-Level",
+          "type": "Full-Time",
+          "location": "Menlo Park, CA",
+          "salaryRange": {
+            "min": 110000,
+            "max": 160000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Health Insurance",
+            "Flexible Hours",
+            "Remote Work"
+          ],
+          "requirements": [
+            "3+ years of experience in frontend development",
+            "Proficient in React and JavaScript",
+            "Strong understanding of UI/UX principles"
+          ],
+          "responsibilities": [
+            "Develop dynamic user interfaces",
+            "Ensure responsive design across devices",
+            "Collaborate with designers and backend developers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6785",
+      "name": "Netflix",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png",
+      "industry": "Entertainment",
+      "rating": 4.5,
+      "reviewCount": 2,
+      "location": "Los Gatos, CA",
+      "description": "Innovative streaming platform known for original content and global reach.",
+      "benefits": [
+        "Unlimited PTO",
+        "Free Subscription",
+        "Parental Leave",
+        "Health Insurance"
+      ],
+      "salaryRange": {
+        "min": 100000,
+        "max": 190000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "6",
+          "rating": 5,
+          "title": "Creative and flexible work culture",
+          "pros": "Freedom to innovate, collaborative team, and generous benefits.",
+          "cons": "Fast-paced environment can feel demanding.",
+          "authorRole": "Content Strategist",
+          "date": "2024-03-01",
+          "likedBy": [],
+          "helpful": 0,
+          "experience": "2+ years at company",
+          "location": "Los Gatos, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 4,
+          "title": "Good packages",
+          "pros": "Good",
+          "cons": "Bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315182322177",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        }
+      ],
+      "roles": [
+        {
+          "id": "623",
+          "title": "Content Strategist",
+          "department": "Content",
+          "level": "Mid-Level",
+          "type": "Full-Time",
+          "location": "Los Gatos, CA",
+          "salaryRange": {
+            "min": 110000,
+            "max": 170000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Flexible Hours",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "2+ years of experience in content strategy",
+            "Excellent communication skills",
+            "Experience in digital media platforms"
+          ],
+          "responsibilities": [
+            "Develop content strategies for new shows",
+            "Collaborate with production teams",
+            "Ensure alignment with audience interests"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "32547963",
+      "name": "Microsoft",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      "industry": "Software & Technology",
+      "rating": 3.4,
+      "reviewCount": 5,
+      "location": "Redmond, WA",
+      "description": "Leading software company with a focus on innovation and cloud solutions.",
+      "benefits": [
+        "Health Insurance",
+        "Remote Work",
+        "Learning Opportunities",
+        "Employee Stock Program"
+      ],
+      "salaryRange": {
+        "min": 95000,
+        "max": 190000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "3",
+          "rating": 3,
+          "title": "Innovation-driven culture",
+          "pros": "Excellent work-life balance, amazing growth opportunities, and top-notch technology.",
+          "cons": "Bureaucratic structure can slow down projects.",
+          "authorRole": "Cloud Solutions Architect",
+          "date": "2024-02-18",
+          "helpful": 1,
+          "likedBy": [
+            "1742558403776"
+          ],
+          "experience": "4+ years at company",
+          "location": "Redmond, WA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 4,
+          "title": "Good packages",
+          "pros": "lot of innovation to learn",
+          "cons": "stress full environment",
+          "authorRole": "Software Developer",
+          "experience": "2 years",
+          "date": "2025-03-15",
+          "id": "20250315180844763",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 5,
+          "title": "Good packages",
+          "pros": "good",
+          "cons": "bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315180930679",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 5,
+          "title": "Good packages",
+          "pros": "nothing ",
+          "cons": "bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315181258593",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 0,
+          "title": "test ",
+          "pros": "test ",
+          "cons": "test",
+          "authorRole": "test",
+          "experience": "3 ",
+          "date": "2025-03-22",
+          "id": "20250322052714983",
+          "helpful": 1,
+          "verified": true,
+          "location": "",
+          "likedBy": [
+            "1742558403776"
+          ]
+        }
+      ],
+      "roles": [
+        {
+          "id": "31073",
+          "title": "Cloud Solutions Architect",
+          "department": "Engineering",
+          "location": "Redmond, WA",
+          "level": "intern",
+          "type": "intership",
+          "salaryRange": {
+            "min": 140000,
+            "max": 190000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Flexible Hours",
+            "Remote Work",
+            "Stock Options"
+          ],
+          "requirements": [
+            "5+ years of experience in cloud architecture",
+            "Proficient in Azure services",
+            "Experience in designing scalable systems"
+          ],
+          "responsibilities": [
+            "Develop cloud architecture strategies",
+            "Collaborate with cross-functional teams",
+            "Optimize cloud-based solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4456",
+      "name": "Apple",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+      "industry": "Consumer Electronics",
+      "rating": 4.5,
+      "reviewCount": 2,
+      "location": "Cupertino, CA",
+      "description": "Pioneering consumer electronics and innovative design.",
+      "benefits": [
+        "Health Insurance",
+        "Employee Discount",
+        "On-site Fitness Center",
+        "Stock Options"
+      ],
+      "salaryRange": {
+        "min": 100000,
+        "max": 200000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "41987",
+          "rating": 4,
+          "title": "Exciting and innovative workplace",
+          "pros": "Cutting-edge technology, excellent work culture, and competitive benefits.",
+          "cons": "Work-life balance can be difficult during product launches.",
+          "authorRole": "Hardware Engineer",
+          "date": "2024-02-22",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "3+ years at company",
+          "location": "Cupertino, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 5,
+          "title": "Good Work culture",
+          "pros": "High Growth in skill and salary",
+          "cons": "Stress full environment ",
+          "authorRole": "Software Developer",
+          "experience": "3 years",
+          "date": "2025-03-15",
+          "id": "20250315180205218",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        }
+      ],
+      "roles": [
+        {
+          "id": "423456",
+          "title": "Hardware Engineer",
+          "department": "Engineering",
+          "location": "Cupertino, CA",
+          "level": "intern",
+          "type": "intership",
+          "salaryRange": {
+            "min": 120000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Health Insurance",
+            "Employee Discount",
+            "Flexible Hours"
+          ],
+          "requirements": [
+            "3+ years of hardware engineering experience",
+            "Proficient in PCB design and embedded systems",
+            "Experience with Apple’s hardware ecosystem"
+          ],
+          "responsibilities": [
+            "Develop and test hardware designs",
+            "Collaborate with design and software teams",
+            "Optimize hardware performance"
+          ]
+        },
+        {
+          "title": "asdfghj",
+          "department": "dfghjk",
+          "level": "Senior",
+          "type": "Part-time",
+          "location": "sdfghjkl",
+          "salaryRange": {
+            "min": 100,
+            "max": 198
+          },
+          "requirements": [
+            "fthygjuki"
+          ],
+          "responsibilities": [
+            "fgyhu"
+          ],
+          "benefits": [
+            "ghjk"
+          ],
+          "id": "20250323143623043"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Google",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      "industry": "Technology",
+      "rating": 4.5,
+      "reviewCount": 4,
+      "location": "Mountain View, CA",
+      "description": "Global leader in search engines, cloud computing, and AI services.",
+      "benefits": [
+        "Health Insurance",
+        "401k",
+        "On-site Gym",
+        "Free Meals"
+      ],
+      "salaryRange": {
+        "min": 100000,
+        "max": 200000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "12340987",
+          "rating": 5,
+          "title": "Amazing work environment",
+          "pros": "Great team collaboration, excellent growth opportunities, and flexible work hours.",
+          "cons": "Fast-paced environment may not suit everyone.",
+          "authorRole": "Software Engineer",
+          "date": "2024-02-15",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "3+ years at company",
+          "location": "Mountain View, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 4,
+          "title": "Good packages",
+          "pros": "Good",
+          "cons": "Bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315182521125",
+          "helpful": 1,
+          "likedBy": [
+            "1742558403776"
+          ],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 4,
+          "title": "Good Infrastructure",
+          "pros": "It has lift to go up and down",
+          "cons": "It has steps which make legs pain",
+          "authorRole": "Visitor",
+          "experience": "0",
+          "date": "2025-03-18",
+          "id": "20250318070156758",
+          "helpful": 1,
+          "verified": true,
+          "location": "",
+          "likedBy": [
+            "1741527906661"
+          ]
+        },
+        {
+          "rating": 5,
+          "title": "Environment in the office",
+          "pros": "It is very pleasant all the time, and a lot of activities to get refreshed in the office ",
+          "cons": "As a lot of heavy work , an employee will never get a chance to enjoy those things",
+          "authorRole": "SD-1",
+          "experience": "4 years",
+          "date": "2025-03-22",
+          "id": "20250322052545328",
+          "helpful": 1,
+          "verified": true,
+          "location": "",
+          "likedBy": [
+            "1741527906661"
+          ]
+        }
+      ],
+      "roles": [
+        {
+          "id": "10654",
+          "title": "Software Engineer",
+          "department": "Engineering",
+          "location": "Mountain View, CA",
+          "level": "part-time",
+          "type": "part-time",
+          "salaryRange": {
+            "min": 130000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Stock Options",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "3+ years of experience in software development",
+            "Proficient in JavaScript/TypeScript",
+            "Experience with cloud platforms (AWS/Azure/GCP)"
+          ],
+          "responsibilities": [
+            "Develop scalable web applications",
+            "Collaborate with cross-functional teams",
+            "Contribute to code reviews and best practices"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Amazon",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      "industry": "E-commerce & Cloud Computing",
+      "rating": 4,
+      "reviewCount": 5,
+      "location": "Seattle, WA",
+      "description": "Global marketplace and leading provider of cloud services.",
+      "benefits": [
+        "Stock Options",
+        "Health Insurance",
+        "Parental Leave",
+        "Employee Discount"
+      ],
+      "salaryRange": {
+        "min": 90000,
+        "max": 180000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "223",
+          "rating": 4,
+          "title": "Challenging yet rewarding",
+          "pros": "Exciting work, great pay, and strong leadership.",
+          "cons": "Work-life balance can be challenging.",
+          "authorRole": "Data Analyst",
+          "date": "2024-01-20",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "2 years at company",
+          "location": "Seattle, WA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 5,
+          "title": "Good packages",
+          "pros": "good",
+          "cons": "bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315181931348",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 5,
+          "title": "good culture",
+          "pros": "stress free",
+          "cons": "slow grouth",
+          "authorRole": "sd2",
+          "experience": "3 years",
+          "date": "2025-03-16",
+          "id": "20250316164528270",
+          "helpful": 0,
+          "verified": true,
+          "location": "",
+          "likedBy": []
+        },
+        {
+          "rating": 5,
+          "title": "testing",
+          "pros": "review not coming",
+          "cons": "tested",
+          "authorRole": "tester",
+          "experience": "10",
+          "date": "2025-03-22",
+          "id": "20250322084855626",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 1,
+          "title": "testing",
+          "pros": "sfjhkf",
+          "cons": "flkjfsf",
+          "authorRole": "tester",
+          "experience": "2",
+          "date": "2025-03-22",
+          "id": "20250322085119033",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        }
+      ],
+      "roles": [
+        {
+          "id": "2129",
+          "title": "Data Analyst",
+          "department": "Analytics",
+          "location": "Seattle, WA",
+          "level": "senior",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 100000,
+            "max": 140000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Flexible Hours",
+            "Stock Options",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "2+ years of data analysis experience",
+            "Proficient in SQL and Python",
+            "Experience with data visualization tools"
+          ],
+          "responsibilities": [
+            "Analyze business data",
+            "Develop dashboards and reports",
+            "Collaborate with product teams for insights"
+          ]
+        },
+        {
+          "title": "software",
+          "department": "it",
+          "level": "Senior",
+          "type": "Full-time",
+          "location": "hyderabad",
+          "salaryRange": {
+            "min": 1000,
+            "max": 20000
+          },
+          "requirements": [
+            "nothing to say"
+          ],
+          "responsibilities": [
+            "coding"
+          ],
+          "benefits": [
+            "nothing"
+          ],
+          "id": "20250323143402452"
+        }
+      ]
+    },
+    {
+      "id": "123456",
+      "name": "Tech Solutions Inc",
+      "logo": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop",
+      "industry": "Information Technology",
+      "rating": 4.5,
+      "reviewCount": 2,
+      "location": "San Francisco, CA",
+      "description": "Leading technology solutions provider specializing in cloud computing and AI",
+      "benefits": [
+        "Health Insurance",
+        "401k",
+        "Remote Work",
+        "Gym Membership"
+      ],
+      "salaryRange": {
+        "min": 80000,
+        "max": 150000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "1678909",
+          "rating": 5,
+          "title": "Great work culture and benefits",
+          "pros": "Excellent work-life balance, competitive salary, and great learning opportunities. The company really invests in employee growth and development. Regular training sessions and workshops keep skills up to date.",
+          "cons": "Project deadlines can be tight sometimes. Communication between departments could be improved. Some legacy systems need updating.",
+          "authorRole": "Senior Software Engineer",
+          "date": "2024-02-15",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "3+ years at company",
+          "location": "San Francisco, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "id": "212345678",
+          "rating": 4,
+          "title": "Solid company with room for growth",
+          "pros": "Great benefits package, competitive pay, and opportunities for advancement. Strong technical team and interesting projects. Good work-life balance.",
+          "cons": "Some processes could be streamlined. Decision-making can be slow at times. Office location could be better.",
+          "authorRole": "Product Manager",
+          "date": "2024-02-10",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "2 years at company",
+          "location": "San Francisco, CA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        }
+      ],
+      "roles": [
+        {
+          "id": "19432",
+          "title": "Senior Software Engineer",
+          "department": "Engineering",
+          "location": "San Francisco, CA",
+          "level": "senior",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 130000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Stock Options",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "5+ years of experience in software development",
+            "Strong knowledge of JavaScript/TypeScript",
+            "Experience with cloud platforms (AWS/Azure/GCP)"
+          ],
+          "responsibilities": [
+            "Lead development of key features",
+            "Mentor junior developers",
+            "Contribute to system architecture"
+          ]
+        },
+        {
+          "id": "20843",
+          "title": "Product Manager",
+          "department": "Product",
+          "location": "San Francisco, CA",
+          "level": "mid-level",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 120000,
+            "max": 160000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Flexible Hours",
+            "Performance Bonus",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "3+ years of product management experience",
+            "Strong analytical skills",
+            "Experience with agile methodologies"
+          ],
+          "responsibilities": [
+            "Define product strategy",
+            "Work with stakeholders",
+            "Manage product roadmap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "123456789",
+      "name": "Global Innovations Ltd",
+      "logo": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop",
+      "industry": "Software Development",
+      "rating": 4.5,
+      "reviewCount": 2,
+      "location": "New York, NY",
+      "description": "Innovative software solutions company focused on digital transformation",
+      "benefits": [
+        "Flexible Hours",
+        "Stock Options",
+        "Learning Budget",
+        "Health Insurance"
+      ],
+      "salaryRange": {
+        "min": 90000,
+        "max": 180000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "3123456789",
+          "rating": 4,
+          "title": "Fantastic learning environment",
+          "pros": "Cutting-edge technology stack, great mentorship program, excellent compensation. Regular team building activities and strong company culture.",
+          "cons": "Fast-paced environment might not suit everyone. Some projects can be challenging with tight deadlines.",
+          "authorRole": "Full Stack Developer",
+          "date": "2024-02-20",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "1.5 years at company",
+          "location": "New York, NY",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "id": "4986",
+          "rating": 5,
+          "title": "Good balance of challenge and support",
+          "pros": "Modern tech stack, friendly colleagues, good benefits. Regular opportunities to learn new technologies and work on different projects.",
+          "cons": "Communication between departments could be better. Some technical debt in older projects.",
+          "authorRole": "Senior Developer",
+          "date": "2024-02-18",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "2.5 years at company",
+          "location": "New York, NY",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        }
+      ],
+      "roles": [
+        {
+          "id": "33456",
+          "title": "Full Stack Developer",
+          "department": "Engineering",
+          "location": "New York, NY",
+          "level": "mid-level",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 100000,
+            "max": 150000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Remote Work",
+            "Learning Budget",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "3+ years of full stack development experience",
+            "Experience with React and Node.js",
+            "Knowledge of database systems"
+          ],
+          "responsibilities": [
+            "Develop full stack applications",
+            "Optimize application performance",
+            "Write clean, maintainable code"
+          ]
+        },
+        {
+          "id": "4987",
+          "title": "UX Designer",
+          "department": "Design",
+          "location": "New York, NY",
+          "level": "mid-level",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 90000,
+            "max": 130000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Creative Environment",
+            "Design Tools Budget",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "MS/PhD in Computer Science or related field",
+            "Strong background in machine learning",
+            "Experience with Python and data analysis tools"
+          ],
+          "responsibilities": [
+            "Develop machine learning models",
+            "Analyze complex datasets",
+            "Present findings to stakeholders"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3741",
+      "name": "DataCraft Analytics",
+      "logo": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=100&h=100&fit=crop",
+      "industry": "Data Analytics",
+      "rating": 3.5,
+      "reviewCount": 2,
+      "location": "Boston, MA",
+      "description": "Leading data analytics company transforming business intelligence",
+      "benefits": [
+        "Remote First",
+        "Unlimited PTO",
+        "Health & Dental",
+        "Education Allowance"
+      ],
+      "salaryRange": {
+        "min": 95000,
+        "max": 175000,
+        "currency": "USD"
+      },
+      "reviews": [
+        {
+          "id": "51234",
+          "rating": 4,
+          "title": "Innovative and employee-focused",
+          "pros": "Cutting-edge projects in AI/ML, great team atmosphere, excellent benefits. Strong emphasis on work-life balance and professional development.",
+          "cons": "Some projects can be very challenging. Occasional long hours during critical releases.",
+          "authorRole": "Data Scientist",
+          "date": "2024-02-22",
+          "helpful": 0,
+          "likedBy": [],
+          "experience": "2 years at company",
+          "location": "Boston, MA",
+          "verified": true,
+          "employmentStatus": "Current",
+          "recommendToFriend": true
+        },
+        {
+          "rating": 3,
+          "title": "Good packages",
+          "pros": "good",
+          "cons": "bad",
+          "authorRole": "Software Developer",
+          "experience": "4 years",
+          "date": "2025-03-15",
+          "id": "20250315182047375",
+          "helpful": 0,
+          "likedBy": [],
+          "verified": true,
+          "location": ""
+        }
+      ],
+      "roles": [
+        {
+          "id": "513",
+          "title": "Data Scientist",
+          "department": "Data Science",
+          "location": "Boston, MA",
+          "level": "enty-level",
+          "type": "contract",
+          "salaryRange": {
+            "min": 120000,
+            "max": 170000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "Research Budget",
+            "Conference Allowance",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "MS/PhD in Computer Science or related field",
+            "Strong background in machine learning",
+            "Experience with Python and data analysis tools"
+          ],
+          "responsibilities": [
+            "Develop machine learning models",
+            "Analyze complex datasets",
+            "Present findings to stakeholders"
+          ]
+        },
+        {
+          "id": "687",
+          "title": "Machine Learning Engineer",
+          "department": "AI/ML",
+          "location": "Boston, MA",
+          "level": "mid-level",
+          "type": "full-time",
+          "salaryRange": {
+            "min": 130000,
+            "max": 180000,
+            "currency": "USD"
+          },
+          "benefits": [
+            "GPU Access",
+            "Research Publications",
+            "Health Insurance"
+          ],
+          "requirements": [
+            "Experience in developing deep learning models",
+            "Proficiency in TensorFlow or PyTorch",
+            "Expertise in data preprocessing and model deployment"
+          ],
+          "responsibilities": [
+            "Build and optimize machine learning models",
+            "Collaborate with data scientists and software engineers",
+            "Deploy models in production environments"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "20250315182934736",
+      "name": "mani",
+      "industry": "software",
+      "location": "hyderabad",
+      "description": "work hard",
+      "logo": "https://c0.wallpaperflare.com/preview/923/582/564/silhouette-of-person-using-camera.jpg",
+      "benefits": [
+        "fs"
+      ],
+      "salaryMin": "4",
+      "salaryMax": "7",
+      "slug": "mani",
+      "salaryRange": {
+        "min": 4,
+        "max": 7,
+        "currency": "USD"
+      },
+      "rating": 2,
+      "reviewCount": 1,
+      "roles": [
+        {
+          "title": "software",
+          "department": "it",
+          "level": "Entry",
+          "type": "Full-time",
+          "location": "Hyderabad",
+          "salaryRange": {
+            "min": "1000",
+            "max": "1991"
+          },
+          "requirements": [
+            "java"
+          ],
+          "responsibilities": [
+            "backend"
+          ],
+          "benefits": [
+            "health"
+          ],
+          "id": "20250320165643249"
+        },
+        {
+          "title": "consontant",
+          "department": "non it",
+          "level": "Lead",
+          "type": "Full-time",
+          "location": "Hyderabad",
+          "salaryRange": {
+            "min": "234",
+            "max": "7410"
+          },
+          "requirements": [
+            "nothing"
+          ],
+          "responsibilities": [
+            "leading"
+          ],
+          "benefits": [
+            "traveling "
+          ],
+          "id": "20250320170434677"
+        }
+      ],
+      "reviews": [
+        {
+          "rating": 2,
+          "title": "today",
+          "pros": "nothing",
+          "cons": "bad",
+          "authorRole": "student",
+          "experience": "10",
+          "date": "2025-03-21",
+          "id": "20250321163155408",
+          "helpful": 0,
+          "verified": true,
+          "location": "",
+          "likedBy": []
+        }
+      ]
+    },
+    {
+      "id": "20250315183216539",
+      "name": "Ani",
+      "industry": "software",
+      "location": "hyderabad",
+      "description": "bad persons",
+      "logo": "https://c0.wallpaperflare.com/preview/923/582/564/silhouette-of-person-using-camera.jpg",
+      "benefits": [
+        "fs"
+      ],
+      "salaryMin": "4",
+      "salaryMax": "7",
+      "slug": "ani",
+      "salaryRange": {
+        "min": 4,
+        "max": 7,
+        "currency": "USD"
+      },
+      "rating": 5,
+      "reviewCount": 2,
+      "reviews": [
+        {
+          "rating": 5,
+          "title": " Work review",
+          "pros": " A lot to learn from doing the projects and the assgined tasks",
+          "cons": "a very limited time is given which increases a lot of pressure",
+          "authorRole": "SD-2",
+          "experience": "2 years",
+          "date": "2025-03-22",
+          "id": "20250322051154541",
+          "helpful": 1,
+          "verified": true,
+          "location": "",
+          "likedBy": [
+            "1741527906661"
+          ]
+        },
+        {
+          "rating": 5,
+          "title": " Work review",
+          "pros": " A lot to learn from doing the projects and the assgined tasks",
+          "cons": "a very limited time is given which increases a lot of pressure",
+          "authorRole": "SD-2",
+          "experience": "2 years",
+          "date": "2025-03-22",
+          "id": "20250322051213948",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        }
+      ]
+    },
+    {
+      "id": "20250322064801982",
+      "name": "Infosys",
+      "industry": "IT ",
+      "location": "Hyderabad, Telangana, India ",
+      "description": "Infosys is a global leader in next-generation digital services and consulting. We enable clients in more than 50 countries to navigate their digital transformation. With over four decades of experience in managing the systems and workings of global enterprises, we expertly steer our clients through their digital journey. We do it by enabling the enterprise with an AI-powered core that helps prioritize the execution of change. We also empower the business with agile digital at scale to deliver unprecedented levels of performance and customer delight. Our always-on learning agenda drives their continuous improvement through building and transferring digital skills, expertise, and ideas from our innovation ecosystem.",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/1280px-Infosys_logo.svg.png",
+      "benefits": [
+        "Health Insurance",
+        "parental benefites"
+      ],
+      "salaryMin": "350000",
+      "salaryMax": "3500000",
+      "slug": "infosys",
+      "salaryRange": {
+        "min": 350000,
+        "max": 3500000,
+        "currency": "USD"
+      },
+      "rating": 3,
+      "reviewCount": 2,
+      "roles": [],
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "work culture",
+          "pros": "a very friendly work culture, employees are well treated irrespective of their positions in the organization",
+          "cons": "very long training period",
+          "authorRole": "SD-1",
+          "experience": "5 years",
+          "date": "2025-03-22",
+          "id": "20250322065014379",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        },
+        {
+          "rating": 1,
+          "title": "fda",
+          "pros": "d",
+          "cons": "d",
+          "authorRole": "d",
+          "experience": "d",
+          "date": "2025-03-22",
+          "id": "20250322103915067",
+          "helpful": 0,
+          "verified": true,
+          "location": ""
+        }
+      ]
+    }
+  ]
+}
