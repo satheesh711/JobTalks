@@ -31,7 +31,7 @@ const CompanyProfile = () => {
     loadCompany();
     loadReviews();
     loadRoles();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     loadReviews();
@@ -178,7 +178,6 @@ const CompanyProfile = () => {
                   <MapPin size={18} className="me-1" />
                   <span>{company?.location}</span>
                 </div>
-                
               </div>
             </div>
           </div>

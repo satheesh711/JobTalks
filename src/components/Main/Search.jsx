@@ -4,7 +4,6 @@ import { Search as SearchIcon, Filter, Building2 } from 'lucide-react';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import CompanyCard from './Comanycard';
 import { companies as companiesData } from '../../Services/companies';
-import { set } from 'react-hook-form';
 
 const Search = () => {
   const location = useLocation();
@@ -13,11 +12,16 @@ const Search = () => {
   const [searchParams, setSearchParams] =useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [companies, setCompanies] = useState([]);
+  const [filters, setFilters] = useState({
+    query: searchParams|| '',
+
+  });
 useEffect(() => {
     if (!id) {
       navigate('/login', { replace: true });
     }
     setSearchParams(location.state?.searchQuery);
+    setFilters({query:location?.state.searchQuery || '' })
 }, [id, navigate, location.state]);
   useEffect(() => {
     Companies();
@@ -32,10 +36,7 @@ useEffect(() => {
     }
   };
 
-  const [filters, setFilters] = useState({
-    query: searchParams|| '',
-
-  });
+  
 
   const industries = Array.from(new Set(companies.map(company => company.industry)));
   const locations = Array.from(new Set(companies.map(company => company.location)));

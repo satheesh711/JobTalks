@@ -13,6 +13,7 @@ import ErrorBoundary from './components/Main/ErrorBoundary';
 import AddReview from './components/Main/AddReview';
 import Search from './components/Main/Search';
 import ProfilePage from './components/Main/Profile';
+import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const AuthenticatedLayout = () => (
@@ -27,6 +28,17 @@ const AuthenticatedLayout = () => (
 function App() {
   return (
     <>
+    <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+    />
     <Router>
       <Routes>
         <Route path="/" element={<Landing />

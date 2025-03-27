@@ -96,7 +96,7 @@ const Navbar = () => {
             style={{ textDecoration: 'none' }}
           >
             <img src={logo} className="me-2" style={{ width: "35px" }} />
-            JabTalks
+            JobTalks
           </Link>
         </div>
         <button

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { checkCompany } from '../../Services/companies';
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const CompanyModal = ({ show, onClose, onSubmit }) => {
 
@@ -16,6 +17,7 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
     salaryMax: ''
   }
 
+
   const [formData, setFormData] = useState(initialFormData);
 
   const handleSubmit = async(e) => {
@@ -25,7 +27,7 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
       ...formData,
       benefits,
       id:new Date().toISOString().replace(/[-:.TZ]/g, ''),
-      slug: formData.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''),
+      slug: formData.name.toLowerCase().trim(),
       salaryRange: {
         min: parseInt(formData.salaryMin),
         max: parseInt(formData.salaryMax),
@@ -40,7 +42,6 @@ const CompanyModal = ({ show, onClose, onSubmit }) => {
     const isDuplicate = await checkCompany(newCompany)
 
   if (isDuplicate) {
-     
       toast.error('Company already exists!');
   } else {
       onSubmit(newCompany);

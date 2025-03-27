@@ -40,6 +40,7 @@ export function LoginForm() {
         return;
       }
       await signInWithEmailAndPassword(auth, data.email, data.password);
+      localStorage.setItem('token', checkCredential);
       toast.success('Successfully logged in!');
       const id = await getUserId(data.email)
       navigate('/home', { state: { id } });
@@ -84,7 +85,7 @@ export function LoginForm() {
       if (check) {
         setTimeout(() => {
           setLoading(false);
-          navigate("/home", { state: { id: check.data.id } });
+          navigate("/home", { state: { id: check.id } });
 
           toast.success("Logged in as Guest", {
             position: "top-right",

@@ -1,76 +1,50 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/users";
+const BASE_URL = "https://jobtalksbackend.onrender.com/users";
 
-export const getUsers = async () => {
-  const response = await axios.get(BASE_URL);
-  return response.data;
-};
-export const getUser = async (id) => {
-  const response = await axios.get(`${BASE_URL}/${id}`);
-  return response.data;
+export const checkUserExists = async (email) => {
+  const response = await axios.get(`${BASE_URL}/exists/${email}`);
+  return response.data.exists;
 };
 
 export const addUser = async (user) => {
   await axios.post(BASE_URL, user);
 };
 
+export const getUserId = async (email) => {
+  const response = await axios.get(`${BASE_URL}/userId/${email}`);
+  return response.data.userId;
+};
+
+export const getUser = async (id) => {
+  const response = await axios.get(`${BASE_URL}/${id}`);
+  return response.data;
+};
+
+export const registerUser = async (user) => {
+  const response =await axios.post(`${BASE_URL}/register`, user);
+  return response.data;
+};
+
+
+export const checkCredentials = async (email, password) => {
+  const response = await axios.post(`${BASE_URL}/check-credentials`, {
+    email,
+    password
+  });
+  return response.data.token;
+};
+
 export const updateUser = async (id, data) => {
   await axios.put(`${BASE_URL}/${id}`, data);
 };
 
-
-export const getUserId = async (email) =>
-{
-  // const response = await getUsers()
-  // return response.find(user => user.email === email).id
-  const response = await axios(`${BASE_URL}/userId/${email}`)
-  return response.data.userId;
-}
-
-
-
-export const checkUserExists = async (email) => {
-  // const users = await getUsers();
-  // return users.some(user => user.email === email);
-  const response = await axios.get(`${BASE_URL}/exists/${email}`);
-  return response.data.exists;
-};
-
-export const checkCredentials = async (email,password) => {
-  // const users = await getUsers();
-  // return users.some(user => (user.email === email) && (user.password === password));
-  const response= await axios.post(`${BASE_URL}/check-credentials`, {
-    email,
-    password
-})
-return response.data.valid
-};
-
-export const guestLogin =async (defaultData={
-  name: "Guest User",
-  email: "guest@example.com",
-  method: "guest",
-}) => {
+export const guestLogin = async () => {
   try {
-    const response = await axios.get(BASE_URL);
-    const users = response.data;
-
-    const existingUser = users.find(user => user.email === "guest@example.com");
-
-    if (existingUser) {
-      const updatedUser = await axios.put(`${BASE_URL}/${existingUser.id}`, defaultData);
-      return updatedUser;
-    } else {
-      const newGuest = {
-        id: Date.now().toString(),
-        ...defaultData
-      };
-      const createdUser = await axios.post(BASE_URL, newGuest);
-      return true
-    }
+    const response = await axios.post(`${BASE_URL}/guest-login`);
+    return response.data;
   } catch (error) {
     console.error("Error handling guest login:", error);
-    return false
+    return false;
   }
-}
+};

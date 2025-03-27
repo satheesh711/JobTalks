@@ -4,7 +4,7 @@ import { Search, Filter } from 'lucide-react';
 import CompanyCard from './Comanycard';
 import CompanyModal from './CompanyModel';
 import AddButton from './Addbutton';
-import { addComapy, companies as companiesData } from '../../Services/companies';
+import { addCompany, companies as companiesData } from '../../Services/companies';
 import { useLocation } from 'react-router-dom';
 
 const Companies = () => {
@@ -49,7 +49,7 @@ const Companies = () => {
   const industries = Array.from(new Set(companies.map(company => company.industry)));
 
   const handleAddCompany = async(newCompany) => {
-    await addComapy(newCompany)
+    await addCompany(newCompany)
     await Companies()
   };
 

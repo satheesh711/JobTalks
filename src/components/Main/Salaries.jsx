@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import Select from 'react-select';
 import AddButton from './Addbutton';
-import { addRole, companies as getCompanies } from '../../Services/companies';
+import { addRole, companies as getCompanies, getSalaryInsights } from '../../Services/companies';
 import RoleModel from './RoleModel';
 import { MapPin } from 'lucide-react';
 
@@ -14,6 +14,7 @@ const Salaries = () => {
   const [selectedRole, setSelectedRole] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [companies, setCompanies] = useState([]);
+  const [salaryInsights, setSalaryInsights] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showRoleModal, setShowRoleModal] = useState(false);
@@ -24,6 +25,7 @@ const Salaries = () => {
     await addRole({ ...role }, id);
     setShowRoleModal(false);
     fetchCompanies();
+    fetchSalaryInsights();
   };
 
   const fetchCompanies = async () => {
@@ -39,8 +41,19 @@ const Salaries = () => {
     }
   };
 
+  const fetchSalaryInsights = async () => {
+    try {
+      const response = await getSalaryInsights();
+      setSalaryInsights(response);
+    } catch (err) {
+      console.error("Error fetching salary insights:", err);
+      setError("Failed to load salary insights. Please try again later.");
+    }
+  };
+
   useEffect(() => {
     fetchCompanies();
+    fetchSalaryInsights();
   }, []);
 
   const allRoles = React.useMemo(() => {
@@ -59,37 +72,6 @@ const Salaries = () => {
 
   const allLocations = React.useMemo(() => {
     return Array.from(new Set(companies.map(company => company.location)));
-  }, [companies]);
-
-  const salaryInsights = React.useMemo(() => {
-    const insights = [];
-
-    companies.forEach(company => {
-      if (company.roles && Array.isArray(company.roles)) {
-        company.roles.forEach(role => {
-          const avgSalary = (role.salaryRange.min + role.salaryRange.max) / 2;
-
-          insights.push({
-            id: `${company.id}-${role.id}`,
-            companyId: company.id,
-            companyName: company.name,
-            role: role.title,
-            department: role.department,
-            amount: avgSalary,
-            minAmount: role.salaryRange.min,
-            maxAmount: role.salaryRange.max,
-            location: role.location,
-            experience: "Based on role requirements",
-            benefits: role.benefits,
-            requirements: role.requirements,
-            date: new Date().toISOString(),
-            currency: role.salaryRange.currency || "USD"
-          });
-        });
-      }
-    });
-
-    return insights;
   }, [companies]);
 
   const filteredSalaries = React.useMemo(() => {

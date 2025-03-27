@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
 import { PasswordStrength } from './PasswordStrength';
-import { addUser, checkUserExists, getUserId } from '../../Services/users';
+import { addUser, checkUserExists, getUserId, registerUser } from '../../Services/users';
 import { toast } from 'react-toastify';
 
 const signupSchema = z.object({
@@ -44,13 +44,12 @@ export function SignupForm() {
 
       await createUserWithEmailAndPassword(auth, data.email, data.password);
       const userData = {
-        id: Date.now().toString(),
         name: data.name,
         email: data.email,
         password: data.password,
         method: 'email'
       };
-      await addUser(userData);
+      await registerUser(userData);
       toast.success('Account created successfully!');
       navigate('/login');
     } catch (error) {

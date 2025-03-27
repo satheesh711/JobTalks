@@ -24,7 +24,7 @@ const Reviews = () => {
 
   useEffect(() => {
     AllReviews();
-  }, []);
+  }, [id]);
 
   const AllReviews = async () => {
     try {
@@ -84,7 +84,6 @@ const Reviews = () => {
     } else {
       await incrementLikes(reviewId, companyId, id);
     }
-
     setLikedReviews((prev) => ({
       ...prev,
       [reviewId]: !isLiked

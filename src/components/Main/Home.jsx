@@ -197,7 +197,7 @@ const Home = () => {
       <section className="py-5 bg-light">
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="display-6 fw-bold">Why Choose JabTalks?</h2>
+            <h2 className="display-6 fw-bold">Why Choose JobTalks?</h2>
             <p className="lead text-muted">Join thousands of professionals making informed career decisions</p>
           </div>
           <div className="row g-4">
