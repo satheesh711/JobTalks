@@ -361,7 +361,7 @@ const CompanyProfile = () => {
                 <div className="card-body text-center py-4">
                   <h3 className="mb-3">Average Salary</h3>
                   <h2 className="display-4 mb-0">
-                    ${averageSalary.toLocaleString()}
+                  ₹{averageSalary.toLocaleString()}
                   </h2>
                   <p className="mb-0 mt-2">
                     Based on {filteredRoles.length} role{filteredRoles.length !== 1 ? 's' : ''}
@@ -403,10 +403,10 @@ const CompanyProfile = () => {
                         </div>
                         <div className="col-md-4 text-md-end mt-3 mt-md-0">
                           <h4 className="mb-0 text-success">
-                            ${((role.salaryRange.min + role.salaryRange.max) / 2).toLocaleString()}
+                          ₹{((role.salaryRange.min + role.salaryRange.max) / 2).toLocaleString()}
                           </h4>
                           <small className="text-muted d-block mb-2">
-                            Range: ${role.salaryRange.min.toLocaleString()} - ${role.salaryRange.max.toLocaleString()}
+                            Range: ₹{role.salaryRange.min.toLocaleString()} - ₹{role.salaryRange.max.toLocaleString()}
                           </small>
                           <div className="d-flex flex-wrap gap-2 justify-content-md-end mt-3">
                             {role.benefits.map((benefit, index) => (

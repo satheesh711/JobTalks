@@ -174,7 +174,7 @@ const Salaries = () => {
             <div className="card-body text-center py-4">
               <h3 className="mb-3">Average Salary</h3>
               <h2 className="display-4 mb-0">
-                ${averageSalary.toLocaleString()}
+              ₹{averageSalary.toLocaleString()}
               </h2>
               <p className="mb-0 mt-2">
                 Based on {filteredSalaries.length} role{filteredSalaries.length !== 1 ? 's' : ''}
@@ -225,10 +225,10 @@ const Salaries = () => {
                   <div className="col-md-6 text-md-end mt-3 d-flex justify-content-md-end row text-center align-items-md-start">
                     <div>
                       <h4 className="mb-0 text-success">
-                        ${Math.round(salary.amount).toLocaleString()}
+                      ₹{Math.round(salary.amount).toLocaleString()}
                       </h4>
                       <small className="text-muted d-block">
-                        Range: ${salary.minAmount.toLocaleString()} - ${salary.maxAmount.toLocaleString()}
+                        Range: ₹{salary.minAmount.toLocaleString()} - ₹{salary.maxAmount.toLocaleString()}
                       </small>
                     </div>
 

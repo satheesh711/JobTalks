@@ -51,7 +51,7 @@ const RoleReviews = ({ roleRef }) => {
                                         opacity: "0.5"
                                     }}
                                 >
-                                    ${role.salaryRange.min} - ${role.salaryRange.max} / year
+                                   ₹{role.salaryRange.min} - ₹{role.salaryRange.max} / year
                                 </p>
 
 
