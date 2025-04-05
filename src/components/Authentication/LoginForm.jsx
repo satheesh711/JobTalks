@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Mail, Lock } from 'lucide-react';
 import { toast } from "react-toastify";
 import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
 import { checkUserExists, addUser, checkCredentials, getUserId, guestLogin } from '../../Services/users';
 
@@ -55,27 +55,69 @@ export function LoginForm() {
   const handleGoogleLogin = async () => {
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const userExists = await checkUserExists(result.user.email);
 
-      if (!userExists) {
-        const userData = {
-          id: Date.now().toString(),
-          name: result.user.displayName,
-          email: result.user.email,
-          method: 'google'
-        };
-        await addUser(userData);
+      // Check if the device is mobile
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // Use redirect flow for mobile devices
+        await signInWithRedirect(auth, provider);
+      } else {
+        // Use popup flow for desktop devices
+        const result = await signInWithPopup(auth, provider);
+        const userExists = await checkUserExists(result.user.email);
+
+        if (!userExists) {
+          const userData = {
+            id: Date.now().toString(),
+            name: result.user.displayName,
+            email: result.user.email,
+            method: 'google'
+          };
+          await addUser(userData);
+        }
+
+        toast.success('Successfully logged in with Google!');
+        const id = await getUserId(result.user.email);
+        navigate('/home', { state: { id } });
       }
-
-      toast.success('Successfully logged in with Google!');
-      const id = await getUserId(result.user.email)
-      navigate('/home', { state: { id } });
     } catch (error) {
-      setUserMessage("Failed to login with Google")
+      setUserMessage("Failed to login with Google");
       toast.error('Failed to login with Google');
     }
   };
+
+  // Handle redirect result for mobile devices
+  const handleRedirectResult = async () => {
+    try {
+      const result = await getRedirectResult(auth);
+      if (result) {
+        const userExists = await checkUserExists(result.user.email);
+
+        if (!userExists) {
+          const userData = {
+            id: Date.now().toString(),
+            name: result.user.displayName,
+            email: result.user.email,
+            method: 'google'
+          };
+          await addUser(userData);
+        }
+
+        toast.success('Successfully logged in with Google!');
+        const id = await getUserId(result.user.email);
+        navigate('/home', { state: { id } });
+      }
+    } catch (error) {
+      console.error("Error handling redirect result:", error);
+      toast.error('Failed to complete Google login');
+    }
+  };
+
+  // Call handleRedirectResult on component mount
+  useState(() => {
+    handleRedirectResult();
+  }, []);
 
   const handleGuest = async () => {
     setLoading(true);
