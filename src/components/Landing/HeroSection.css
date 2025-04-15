@@ -30,17 +30,16 @@
 
 @media (max-width: 768px) {
     .hero {
-        height: 70vh;   
+        height: 46vh;   
     }
 
     .carousel-container {
-        height: 70vh;  
+        height: 50vh;  
     }
 
     .carousel-container img {
-        height: 70vh;  
+        height: 50vh;  
     }
-
     .hero h1 {
         font-size: 2rem;  
     }

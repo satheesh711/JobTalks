@@ -169,7 +169,7 @@ const Home = () => {
                 whileHover={{ y: -10 }}
               >
                 <div className="card-body text-center p-4">
-                  <DollarSign className="text-success mb-3" size={40} />
+                <span className="text-success mb-3" style={{ fontSize: '40px' }}>₹</span>
                   <h5 className="card-title">Salary Insights</h5>
                   <p className="card-text">Compare salaries across companies and roles to make informed career decisions.</p>
                   <Link to="/home/salaries" state={{ id }} className="btn btn-outline-primary mt-3">View Salaries</Link>
